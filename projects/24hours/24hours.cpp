@@ -27,7 +27,6 @@ void section2()
     std::cout << "========================\n";
 }
 
-
 void section3()
 {
     // C++ data type test.
@@ -47,10 +46,21 @@ void section3()
     std::cout << "========================\n";
 }
 
+void section4(){
+    //
+    std::cout << "Section 4 Expression statement and operators \n";
+    int x = 5; 
+    int sum = ++x; 
+    std::cout << "prefix sum = ++x, sum =" << sum << ", x = "<< x <<" \n";
+    x = 5;
+    sum = x++;
+    std::cout << "prefix sum = ++x, sum =" << sum << ", x = "<< x <<" \n";
+}
 
 int main()
 {
     section2();
     section3();
+    section4();
     return 0;
 }
