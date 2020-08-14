@@ -7,6 +7,10 @@ const int TEST_MD1 = true;
 enum COLOR {RED, BLUE, GREEN}; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
+bool isLeapYear(int);
+inline int add(int, int);// defined the function as inline if we need to use it several times.
+
+
 int add(int x, int y)
 {
     // add integer x and integer y then return the sum value
@@ -57,10 +61,42 @@ void section4(){
     std::cout << "prefix sum = ++x, sum =" << sum << ", x = "<< x <<" \n";
 }
 
+void section5(){
+    //
+    std::cout << "Section 5 Parameters and Functions\n";
+    int year;
+    std::cout << "Type in the year int number:";
+    std::cin >> year;
+    if (isLeapYear(year))
+    {
+        std::cout << "Year [" << year << " ] is leapyear .\n";
+    }
+    else
+    {
+        std::cout << "Year [" << year << " ] is not leapyear .\n";
+    }
+}
+
+bool isLeapYear(int year)
+{
+    if (year % 4 == 0)
+    {
+        if (year % 100 == 0)
+        {
+            if (year % 400 == 0)
+                return true;
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
 int main()
 {
     section2();
     section3();
     section4();
+    section5();
     return 0;
 }
