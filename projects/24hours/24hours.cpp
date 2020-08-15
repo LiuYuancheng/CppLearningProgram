@@ -9,6 +9,7 @@ enum COLOR {RED, BLUE, GREEN}; // default re
 
 bool isLeapYear(int);
 inline int add(int, int);// defined the function as inline if we need to use it several times.
+void matrixDisplay();
 
 
 int add(int x, int y)
@@ -77,6 +78,39 @@ void section5(){
     }
 }
 
+void section6()
+{
+    std::cout << "Section 6 control the flow of a program.\n";
+
+    int count = 60;
+    do
+    {
+        count++;
+    } while (count <= 50);
+    matrixDisplay();
+}
+
+void matrixDisplay()
+{
+    int row, colum;
+    char c;
+    std::cout << "Enter the row number: ";
+    std::cin >> row;
+    std::cout << "Enter the colum number: ";
+    std::cin >> colum;
+    std::cout << "Enter the charactor: ";
+    std::cin >> c;
+    std::cout << "\n";
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < colum; j++)
+        {
+            std::cout << c;
+        }
+        std::cout << "\n";
+    }
+}
+
 bool isLeapYear(int year)
 {
     if (year % 4 == 0)
@@ -98,5 +132,6 @@ int main()
     section3();
     section4();
     section5();
+    section6();
     return 0;
 }
