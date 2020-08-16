@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 //two way to define a constants:
 const int TEST_MD1 = true;
@@ -8,9 +9,8 @@ enum COLOR {RED, BLUE, GREEN}; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
 bool isLeapYear(int);
-inline int add(int, int);// defined the function as inline if we need to use it several times.
+inline int add(int, int); // defined the function as inline if we need to use it several times.
 void matrixDisplay();
-
 
 int add(int x, int y)
 {
@@ -28,7 +28,8 @@ void section2()
     std::cin >> x;
     std::cout << "Type in the 2nd int:";
     std::cin >> y;
-    std::cout << "Result:\n" << add(x,y) <<"\n";
+    std::cout << "Result:\n"
+              << add(x, y) << "\n";
     std::cout << "========================\n";
 }
 
@@ -44,25 +45,27 @@ void section3()
     std::cout << " - The size of double : \t" << sizeof(double) << "bytes \n";
     std::cout << " - The size of long long int : \t" << sizeof(long long int) << "bytes \n";
     // C++ constant
-    std::cout << " Constant val 'RED' = \t" << RED <<"\n";
-    std::cout << " Constant val 'GREEN' = " << GREEN <<"\n";
-    std::cout << " Constant val 'BLUE' = \t" << BLUE <<"\n";
+    std::cout << " Constant val 'RED' = \t" << RED << "\n";
+    std::cout << " Constant val 'GREEN' = " << GREEN << "\n";
+    std::cout << " Constant val 'BLUE' = \t" << BLUE << "\n";
     //
     std::cout << "========================\n";
 }
 
-void section4(){
+void section4()
+{
     //
     std::cout << "Section 4 Expression statement and operators \n";
-    int x = 5; 
-    int sum = ++x; 
-    std::cout << "prefix sum = ++x, sum =" << sum << ", x = "<< x <<" \n";
+    int x = 5;
+    int sum = ++x;
+    std::cout << "prefix sum = ++x, sum =" << sum << ", x = " << x << " \n";
     x = 5;
     sum = x++;
-    std::cout << "prefix sum = ++x, sum =" << sum << ", x = "<< x <<" \n";
+    std::cout << "prefix sum = ++x, sum =" << sum << ", x = " << x << " \n";
 }
 
-void section5(){
+void section5()
+{
     //
     std::cout << "Section 5 Parameters and Functions\n";
     int year;
@@ -88,6 +91,20 @@ void section6()
         count++;
     } while (count <= 50);
     matrixDisplay();
+}
+
+void section7()
+{
+    std::cout << "Section 7 array and string.\n";
+    // calculate the array size
+    int post[] = {10, 20, 30, 40, 50};
+    std::cout << "The array post size is :" << sizeof(post) / sizeof(post[0]) << "\n";
+    char name[50];
+    std::cout << " Please enter your name: \n";
+    std::cin >> name;
+    char cpName[50];
+    strcpy(cpName, name);
+    std::cout << " The front 10 chars of the input is : " << cpName << "\n";
 }
 
 void matrixDisplay()
@@ -128,10 +145,12 @@ bool isLeapYear(int year)
 
 int main()
 {
+
     section2();
     section3();
     section4();
     section5();
     section6();
+    section7();
     return 0;
 }
