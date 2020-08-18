@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include<unistd.h>
 
 //two way to define a constants:
 const int TEST_MD1 = true;
@@ -11,6 +12,69 @@ enum COLOR {RED, BLUE, GREEN}; // default re
 bool isLeapYear(int);
 inline int add(int, int); // defined the function as inline if we need to use it several times.
 void matrixDisplay();
+
+// =======================================================================
+class Tricycle
+{
+public:
+    Tricycle(int initialSpeed);
+    ~Tricycle();
+    int getSpeed();
+    void setSpeed(int speed);
+    void pedal();
+    void brake();
+
+private:
+    int speed = 0;
+};
+
+// object constructor.
+Tricycle::Tricycle(int initialSpeed)
+{
+    std::cout << "Constructor: create the object. \n";
+    setSpeed(initialSpeed);
+}
+
+Tricycle::~Tricycle()
+{
+    std::cout << "Destructor: destroy the object. \n";
+    setSpeed(0);
+}
+
+int Tricycle::getSpeed()
+{
+    return speed;
+}
+
+// Set the speed.
+void Tricycle::setSpeed(int newSpeed)
+{
+    if (newSpeed >= 0)
+    {
+        speed = newSpeed;
+    }
+    else
+    {
+        std::cout << "The tricycle has stopped.\n";
+        speed = 0;
+    }
+}
+
+void Tricycle::pedal()
+{
+    setSpeed(speed + 1);
+    sleep(0.5);
+    std::cout << "nPedaling: increase speed to:" << getSpeed() << " mph\n";
+}
+
+void Tricycle::brake()
+{
+    setSpeed(speed - 1);
+    sleep(0.5);
+    std::cout << "nBrakeing: decrease speed to:" << getSpeed() << " mph\n";
+}
+
+//=============================================================================
 
 int add(int x, int y)
 {
@@ -107,6 +171,19 @@ void section7()
     std::cout << " The front 10 chars of the input is : " << cpName << "\n";
 }
 
+void section8()
+{
+    std::cout << "Section 8: Creating and deleting the object.\n";
+    Tricycle wichita(5);
+    wichita.pedal();
+    wichita.pedal();
+    wichita.brake();
+    wichita.pedal();
+
+
+}
+
+
 void matrixDisplay()
 {
     int row, colum;
@@ -143,14 +220,46 @@ bool isLeapYear(int year)
     return false;
 }
 
+void callSections(int choice)
+{
+    switch (choice)
+    {
+    case 2:
+        section2();
+        break;
+    case 3:
+        section3();
+        break;
+    case 4:
+        section4();
+        break;
+    case 5:
+        section5();
+        break;
+    case 6:
+        section6();
+        break;
+    case 7:
+        section7();
+        break;
+    case 8:
+        section8();
+        break;
+    default:
+        std::cout << " he choice [" << choice << "] is not volid\n";
+        break;
+    }
+}
+
 int main()
 {
-
-    section2();
-    section3();
-    section4();
-    section5();
-    section6();
-    section7();
+    std::cout << "Welcome to leaning C++ for 24 hours ^_^ \n";
+    int choice = 0;
+    do{
+        std::cout << "Enter the section number(2-8) you want to check the test code, 0 for end: ";
+        std::cin >> choice;
+        callSections(choice);
+    }while(choice != 0);
+    std::cout << "\n Program finished ";
     return 0;
 }
