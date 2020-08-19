@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string.h>
-#include<unistd.h>
+#include "24hours.hpp"
 
 //two way to define a constants:
 const int TEST_MD1 = true;
@@ -14,20 +14,7 @@ inline int add(int, int); // defined the function as inline if we need to use it
 void matrixDisplay();
 
 // =======================================================================
-class Tricycle
-{
-public:
-    Tricycle(int initialSpeed);
-    ~Tricycle();
-    int getSpeed();
-    void setSpeed(int speed);
-    void pedal();
-    void brake();
-
-private:
-    int speed = 0;
-};
-
+// Class: 24hours.hpp::Tricycle
 // object constructor.
 Tricycle::Tricycle(int initialSpeed)
 {
@@ -39,11 +26,6 @@ Tricycle::~Tricycle()
 {
     std::cout << "Destructor: destroy the object. \n";
     setSpeed(0);
-}
-
-int Tricycle::getSpeed()
-{
-    return speed;
 }
 
 // Set the speed.
@@ -58,20 +40,6 @@ void Tricycle::setSpeed(int newSpeed)
         std::cout << "The tricycle has stopped.\n";
         speed = 0;
     }
-}
-
-void Tricycle::pedal()
-{
-    setSpeed(speed + 1);
-    sleep(0.5);
-    std::cout << "nPedaling: increase speed to:" << getSpeed() << " mph\n";
-}
-
-void Tricycle::brake()
-{
-    setSpeed(speed - 1);
-    sleep(0.5);
-    std::cout << "nBrakeing: decrease speed to:" << getSpeed() << " mph\n";
 }
 
 //=============================================================================
@@ -183,6 +151,13 @@ void section8()
 
 }
 
+void section9(){
+
+
+
+
+}
+
 
 void matrixDisplay()
 {
@@ -245,6 +220,8 @@ void callSections(int choice)
     case 8:
         section8();
         break;
+    case 9: 
+        section9();
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
         break;
