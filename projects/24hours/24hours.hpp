@@ -39,3 +39,40 @@ public:
 private:
     int x, y;
 };
+
+//=============================================================================
+class Rectangle
+{
+public:
+    Rectangle(int newTop, int newLeft, int newBtm, int newRight);
+    ~Rectangle(){};
+    int getTop() const { return top; };
+    int getLeft() const { return left; };
+    int getBottom() const { return bottom; };
+    int getRight() const { return right; };
+    Point getUpperL() const { return upperL; };
+    Point getLowwrL() const { return lowerL; };
+    Point getUpperR() const { return upperR; };
+    Point getLowerR() const { return lowerR; };
+    int getArea() const { return ((right - left) * (top - bottom)); };
+
+    void setTop(int newT);
+    void setLeft(int newL);
+    void setRight(int newR);
+    void setBottom(int newB);
+    void setUpperL(Point location);
+    void setUpperR(Point location);
+    void setLowerL(Point location);
+    void setLowerR(Point location);
+
+private:
+    int top;
+    int left;
+    int bottom;
+    int right;
+    Point upperL;
+    Point upperR;
+    Point lowerL;
+    Point lowerR;
+};
+//=============================================================================

@@ -4,14 +4,20 @@
 
 //two way to define a constants:
 const int TEST_MD1 = true;
-#define TEST_MD2 true; 
+#define TEST_MD2 true;
 
-enum COLOR {RED, BLUE, GREEN}; // default re
+enum COLOR
+{
+    RED,
+    BLUE,
+    GREEN
+}; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
 bool isLeapYear(int);
 inline int add(int, int); // defined the function as inline if we need to use it several times.
 void matrixDisplay();
+int loadInt();
 
 // =======================================================================
 // Class: 24hours.hpp::Tricycle
@@ -40,6 +46,91 @@ void Tricycle::setSpeed(int newSpeed)
         std::cout << "The tricycle has stopped.\n";
         speed = 0;
     }
+}
+
+//=============================================================================
+Rectangle::Rectangle(int newTop, int newLeft, int newBtm, int newRight)
+{
+    top = newTop;
+    left = newLeft;
+    bottom = newBtm;
+    right = newRight;
+
+    upperL.setX(left);
+    upperL.setY(top);
+
+    upperR.setX(right);
+    upperR.setX(top);
+
+    lowerL.setX(left);
+    lowerL.setY(bottom);
+
+    lowerR.setX(right);
+    lowerR.setY(bottom);
+}
+
+void Rectangle::setTop(int newT)
+{
+    top = newT;
+    upperL.setY(top);
+    upperR.setY(top);
+}
+
+void Rectangle::setLeft(int newL)
+{
+    left = newL;
+    upperL.setX(left);
+    lowerL.setX(left);
+}
+
+void Rectangle::setBottom(int newB)
+{
+    bottom = newB;
+    lowerL.setY(bottom);
+    lowerR.setY(bottom);
+}
+
+void Rectangle::setRight(int newR)
+{
+    right = newR;
+    upperR.setX(right);
+    lowerR.setX(right);
+}
+
+void Rectangle::setUpperL(Point location)
+{
+    upperL = location;
+    upperR.setY(location.getY());
+    lowerL.setX(location.getX());
+    top = location.getY();
+    left = location.getX();
+}
+
+void Rectangle::setUpperR(Point location)
+{
+    upperR = location;
+    upperL.setY(location.getY());
+    lowerR.setX(location.getX());
+    top = location.getY();
+    right = location.getX();
+}
+
+void Rectangle::setLowerL(Point location)
+{
+    lowerL = location;
+    lowerR.setY(location.getY());
+    upperL.setX(location.getX());
+    bottom = location.getY();
+    left = location.getX();
+}
+
+void Rectangle::setLowerR(Point location)
+{
+    lowerR = location;
+    upperR.setX(location.getY());
+    lowerL.setY(location.getY());
+    bottom = location.getY();
+    right = location.getX();
 }
 
 //=============================================================================
@@ -147,17 +238,61 @@ void section8()
     wichita.pedal();
     wichita.brake();
     wichita.pedal();
-
-
 }
 
-void section9(){
+void section9()
+{
+    std::cout << "Section 9: Moving into Advanced Classes.\n";
+    Rectangle cRectangl(100, 20, 50, 80);
+    std::cout << "The initl rectangle area is : " << cRectangl.getArea() << "\n";
+    char choice;
+    do
+    {
+        std::cout << "> L : update the left value.\n";
+        std::cout << "> R : update the right value. \n";
+        std::cout << "> T : update the Top value. \n";
+        std::cout << "> B : update the bottom value. \n";
+        std::cout << "> A : Calculate the area. \n";
+        std::cout << "> D : Display 4 points of the rect. \n";
+        std::cout << "> S : Stop the function. \n";
 
+        std::cout << "Enter the choice: ";
+        std::cin >> choice;
 
-
-
+        switch (choice)
+        {
+        case 'L':
+            cRectangl.setLeft(loadInt());
+            break;
+        case 'R':
+            cRectangl.setRight(loadInt());
+            break;
+        case 'T':
+            cRectangl.setTop(loadInt());
+            break;
+        case 'B':
+            cRectangl.setBottom(loadInt());
+            break;
+        case 'A':
+            std::cout << " The rectangle area :" << cRectangl.getArea() << "\n";
+            break;
+        case 'S':
+            std::cout << "Function stopping ... \n";
+            break;
+        default:
+            std::cout << "The choice [ " << choice << "] is not valid.\n";
+            break;
+        }
+    } while (choice != 'S');
 }
 
+int loadInt()
+{
+    int x;
+    std::cout << "Enter the number: ";
+    std::cin >> x;
+    return x;
+}
 
 void matrixDisplay()
 {
@@ -220,7 +355,7 @@ void callSections(int choice)
     case 8:
         section8();
         break;
-    case 9: 
+    case 9:
         section9();
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
@@ -232,11 +367,12 @@ int main()
 {
     std::cout << "Welcome to leaning C++ for 24 hours ^_^ \n";
     int choice = 0;
-    do{
+    do
+    {
         std::cout << "Enter the section number(2-8) you want to check the test code, 0 for end: ";
         std::cin >> choice;
         callSections(choice);
-    }while(choice != 0);
+    } while (choice != 0);
     std::cout << "\n Program finished ";
     return 0;
 }
