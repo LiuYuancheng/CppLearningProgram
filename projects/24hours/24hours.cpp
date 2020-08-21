@@ -286,6 +286,61 @@ void section9()
     } while (choice != 'S');
 }
 
+void section10()
+{
+    std::cout << "Section 10: Pointer and the usage.\n";
+    int theValue = 5;
+    int *pPointer = &theValue;
+    std::cout << "pPointer:" << pPointer << "\n";
+    std::cout << "&theValue" << &theValue << "\n";
+    std::cout << "*pPointer:" << *pPointer << "\n";
+    theValue = 7;
+    std::cout << "*pPointer:" << *pPointer << "\n";
+
+    unsigned short int mAge = 5, yAge = 10;
+    unsigned short int *pAge = nullptr;
+
+    pAge = &mAge;
+    std::cout << "MyAge:\t" << mAge << "\tYourAge\t" << yAge << "\n";
+    std::cout << "&MyAge:\t" << &mAge << "\t&YourAge\t" << &yAge << "\n";
+    std::cout << "pAge:\t" << pAge << "\t*pAge\t" << *pAge << "\n";
+
+    pAge = &yAge;
+    std::cout << "MyAge:\t" << mAge << "\tYourAge\t" << yAge << "\n";
+    std::cout << "&MyAge:\t" << &mAge << "\t&YourAge\t" << &yAge << "\n";
+    std::cout << "pAge:\t" << pAge << "\t*pAge\t" << *pAge << "\n";
+    // delate the pointer to release the memory.
+    pPointer = NULL;
+    pAge = NULL;
+    delete pPointer;
+    delete pAge;
+
+    // Heap test code:
+    int localV = 5;
+    int *pLocal = &localV;
+    int *pHeap = new int;
+    if (pHeap == NULL)
+    {
+        std::cout << "Error! no memory for Heap.\n";
+        return;
+    }
+    *pLocal = 7;
+    std::cout << "localV:" << localV << "\n";
+    std::cout << "*pLocal:" << *pLocal << "\n";
+    std::cout << "*pHeap:" << *pHeap << "\n";
+    delete pHeap;
+    pHeap = new int;
+    if (pHeap == NULL)
+    {
+        std::cout << "Error! no memory for Heap.\n";
+        return;
+    }
+    *pHeap = 9;
+    std::cout << "*pHeap:" << *pHeap << "\n";
+    delete pHeap;
+    delete pLocal;
+}
+
 int loadInt()
 {
     int x;
@@ -357,6 +412,10 @@ void callSections(int choice)
         break;
     case 9:
         section9();
+        break;
+    case 10:
+        section10();
+        break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
         break;
