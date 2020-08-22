@@ -134,7 +134,19 @@ void Rectangle::setLowerR(Point location)
 }
 
 //=============================================================================
+sampleCat::sampleCat(){
+    std::cout << " Instruction will be called when 'New' object is define.\n";
+    itsAge = new int(1);
+    itsWeight = new int(5);
+}
 
+sampleCat::~sampleCat(){
+    std::cout << " Desctruction  will be called when 'delete' the object.\n";
+    delete itsAge;
+    delete itsWeight;
+}
+
+//=============================================================================
 int add(int x, int y)
 {
     // add integer x and integer y then return the sum value
@@ -341,6 +353,38 @@ void section10()
     delete pLocal;
 }
 
+void section11(){
+    std::cout << "Section 10: Pointer and the usage.\n";
+    std::cout << "sampleCat frisky;\n";
+    sampleCat frisky;
+
+    std::cout << "sampleCat *pRage = new sampleCat;\n";
+    sampleCat *pRage = new sampleCat;
+
+    std::cout << "pRage is "<< pRage->GetAge()<<" years old.\n";
+    pRage->SetAge(5);
+    std::cout << "pRage is "<< pRage->GetAge()<<" years old.\n";
+    std::cout << "delete pRage;\n";
+    delete pRage;
+
+    std::cout << "Const Pointer test:\n";
+    sampleCat* p1 = new sampleCat;
+    const sampleCat *p2 = new sampleCat;
+    sampleCat* const p3 = new sampleCat;
+
+    std::cout << "p1 weight "<< p1->GetWeight()<<".\n";
+    std::cout << "p2 weight "<< p2->GetWeight()<<".\n";
+    std::cout << "p3 weight "<< p3->GetWeight()<<".\n";
+    p1->SetWeigth(10);
+    p3->SetWeigth(10);
+
+    std::cout << "p1 weight "<< p1->GetWeight()<<".\n";
+    std::cout << "p2 weight "<< p2->GetWeight()<<".\n";
+    std::cout << "p3 weight "<< p3->GetWeight()<<".\n";
+
+    std::cout << "Function end ;\n";
+}
+
 int loadInt()
 {
     int x;
@@ -415,6 +459,9 @@ void callSections(int choice)
         break;
     case 10:
         section10();
+        break;
+    case 11:
+        section11();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";

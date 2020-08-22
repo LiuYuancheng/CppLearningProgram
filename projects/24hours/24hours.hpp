@@ -76,3 +76,17 @@ private:
     Point lowerR;
 };
 //=============================================================================
+class sampleCat
+{
+public:
+    sampleCat();
+    ~sampleCat();
+    int GetAge() const { return *itsAge; };
+    int GetWeight() const { return *itsWeight; };
+    void SetAge(int newAge) { *itsAge = newAge; };
+    void SetWeigth(int newW) { *itsWeight = newW; };
+
+private:
+    int *itsAge;
+    int *itsWeight;
+};
