@@ -6,6 +6,11 @@
 const int TEST_MD1 = true;
 #define TEST_MD2 true;
 
+enum ERR_CODE{
+    SUCCESS,
+    ERROR
+};
+
 enum COLOR
 {
     RED,
@@ -17,6 +22,9 @@ enum COLOR
 bool isLeapYear(int);
 inline int add(int, int); // defined the function as inline if we need to use it several times.
 void matrixDisplay();
+void swapPointer(int *x, int *y);
+void swapReference(int &x, int &y);
+ERR_CODE factor(int , int&, int&);
 int loadInt();
 
 // =======================================================================
@@ -354,7 +362,7 @@ void section10()
 }
 
 void section11(){
-    std::cout << "Section 10: Pointer and the usage.\n";
+    std::cout << "Section 11: Pointer and the usage.\n";
     std::cout << "sampleCat frisky;\n";
     sampleCat frisky;
 
@@ -383,6 +391,57 @@ void section11(){
     std::cout << "p3 weight "<< p3->GetWeight()<<".\n";
 
     std::cout << "Function end ;\n";
+}
+
+void section12(){
+    std::cout << "Section 12: Creating Reference.\n";
+    int intOne;
+    int &rIntOne = intOne;
+    intOne = 5;
+    std::cout << "intOne = " << intOne << "\n";
+    std::cout << "rIntOne = " << rIntOne << "\n";
+
+    std::cout << "&intOne = " << &intOne << "\n";
+    std::cout << "&rIntOne = " << &rIntOne << "\n";
+    int x = 5; 
+    int y = 10;
+    swapPointer(&x, &y);
+    std::cout << "x = " << x << ", y = " << y << "\n";
+    x = 5; 
+    y = 10;
+    swapReference(x, y);
+    std::cout << "x = " << x << ", y = " << y << "\n";
+    int n, sqr, cube;
+    std::cout << " Enter a int number: ";
+    std::cin >> n;
+    if(factor(n, sqr, cube) == SUCCESS){
+        std::cout << " n = " << n << "\n";
+        std::cout << " square = " << sqr << "\n";
+        std::cout << " cube = " << cube << "\n";
+    }else{
+        std::cout << " Got an error \n ";
+    }
+}
+
+void swapPointer(int *px, int *py)
+{
+    // swap x and y by pass in pointer.
+    int temp;
+    temp = *px;
+    *px = *py;
+    *py = temp;
+}
+
+void swapReference( int &rx, int &ry){
+    int temp = rx;
+    rx = ry;
+    ry = temp;
+}
+
+ERR_CODE factor(int n, int &sqr, int &cube){
+    sqr = n*n;
+    cube = n*n*n;
+    return SUCCESS;
 }
 
 int loadInt()
@@ -433,6 +492,9 @@ void callSections(int choice)
 {
     switch (choice)
     {
+    case 0:
+        std::cout << "no more test .... ";
+        return;
     case 2:
         section2();
         break;
@@ -462,6 +524,9 @@ void callSections(int choice)
         break;
     case 11:
         section11();
+        break;
+    case 12:
+        section12();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
