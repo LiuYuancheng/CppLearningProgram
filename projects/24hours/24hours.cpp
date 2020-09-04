@@ -19,13 +19,15 @@ enum COLOR
 }; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
-bool isLeapYear(int);
 inline int add(int, int); // defined the function as inline if we need to use it several times.
+bool isLeapYear(int);
 void matrixDisplay();
 void swapPointer(int *x, int *y);
 void swapReference(int &x, int &y);
 ERR_CODE factor(int , int&, int&);
 int loadInt();
+sampleCat catFunOne(sampleCat theCat);
+sampleCat* catFunTwo(sampleCat* theCat);
 
 // =======================================================================
 // Class: 24hours.hpp::Tricycle
@@ -148,6 +150,13 @@ sampleCat::sampleCat(){
     itsWeight = new int(5);
 }
 
+sampleCat::sampleCat(sampleCat &)
+{
+    std::cout << " sample cat copy instructor.\n";
+    itsAge = new int(1);
+    itsWeight = new int(5);
+}
+
 sampleCat::~sampleCat(){
     std::cout << " Desctruction  will be called when 'delete' the object.\n";
     delete itsAge;
@@ -155,13 +164,6 @@ sampleCat::~sampleCat(){
 }
 
 //=============================================================================
-int add(int x, int y)
-{
-    // add integer x and integer y then return the sum value
-    std::cout << "Calculating ... \n";
-    return x + y;
-}
-
 void section2()
 {
     // C++ stand input/output test.
@@ -176,6 +178,13 @@ void section2()
     std::cout << "========================\n";
 }
 
+int add(int x, int y)
+{
+    // add integer x and integer y then return the sum value
+    std::cout << "Calculating ... \n";
+    return x + y;
+}
+//-----------------------------------------------------------------------------
 void section3()
 {
     // C++ data type test.
@@ -195,6 +204,7 @@ void section3()
     std::cout << "========================\n";
 }
 
+//-----------------------------------------------------------------------------
 void section4()
 {
     //
@@ -207,6 +217,7 @@ void section4()
     std::cout << "prefix sum = ++x, sum =" << sum << ", x = " << x << " \n";
 }
 
+//-----------------------------------------------------------------------------
 void section5()
 {
     //
@@ -224,6 +235,22 @@ void section5()
     }
 }
 
+bool isLeapYear(int year)
+{
+    if (year % 4 == 0)
+    {
+        if (year % 100 == 0)
+        {
+            if (year % 400 == 0)
+                return true;
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+//-----------------------------------------------------------------------------
 void section6()
 {
     std::cout << "Section 6 control the flow of a program.\n";
@@ -236,6 +263,28 @@ void section6()
     matrixDisplay();
 }
 
+void matrixDisplay()
+{
+    int row, colum;
+    char c;
+    std::cout << "Enter the row number: ";
+    std::cin >> row;
+    std::cout << "Enter the colum number: ";
+    std::cin >> colum;
+    std::cout << "Enter the charactor: ";
+    std::cin >> c;
+    std::cout << "\n";
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < colum; j++)
+        {
+            std::cout << c;
+        }
+        std::cout << "\n";
+    }
+}
+
+//-----------------------------------------------------------------------------
 void section7()
 {
     std::cout << "Section 7 array and string.\n";
@@ -250,6 +299,7 @@ void section7()
     std::cout << " The front 10 chars of the input is : " << cpName << "\n";
 }
 
+//-----------------------------------------------------------------------------
 void section8()
 {
     std::cout << "Section 8: Creating and deleting the object.\n";
@@ -260,6 +310,7 @@ void section8()
     wichita.pedal();
 }
 
+//-----------------------------------------------------------------------------
 void section9()
 {
     std::cout << "Section 9: Moving into Advanced Classes.\n";
@@ -306,6 +357,15 @@ void section9()
     } while (choice != 'S');
 }
 
+int loadInt()
+{
+    int x;
+    std::cout << "Enter the number: ";
+    std::cin >> x;
+    return x;
+}
+
+//-----------------------------------------------------------------------------
 void section10()
 {
     std::cout << "Section 10: Pointer and the usage.\n";
@@ -361,6 +421,7 @@ void section10()
     delete pLocal;
 }
 
+//-----------------------------------------------------------------------------
 void section11(){
     std::cout << "Section 11: Pointer and the usage.\n";
     std::cout << "sampleCat frisky;\n";
@@ -393,6 +454,7 @@ void section11(){
     std::cout << "Function end ;\n";
 }
 
+//-----------------------------------------------------------------------------
 void section12(){
     std::cout << "Section 12: Creating Reference.\n";
     int intOne;
@@ -444,50 +506,30 @@ ERR_CODE factor(int n, int &sqr, int &cube){
     return SUCCESS;
 }
 
-int loadInt()
-{
-    int x;
-    std::cout << "Enter the number: ";
-    std::cin >> x;
-    return x;
+//-----------------------------------------------------------------------------
+void section13(){
+    std::cout << "Section 13: Passing be Reference efficiency.\n";
+    std::cout << "Init a sample cat\n";
+    
+    sampleCat catA;
+    std::cout << "Call function one\n";
+    catFunOne(catA);
+    std::cout << "Call function two\n";
+    catFunTwo(&catA);
+        
 }
 
-void matrixDisplay()
-{
-    int row, colum;
-    char c;
-    std::cout << "Enter the row number: ";
-    std::cin >> row;
-    std::cout << "Enter the colum number: ";
-    std::cin >> colum;
-    std::cout << "Enter the charactor: ";
-    std::cin >> c;
-    std::cout << "\n";
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < colum; j++)
-        {
-            std::cout << c;
-        }
-        std::cout << "\n";
-    }
+sampleCat catFunOne(sampleCat theCat){
+    std::cout << "Function 1 return the Cat \n";
+    return theCat;
 }
 
-bool isLeapYear(int year)
-{
-    if (year % 4 == 0)
-    {
-        if (year % 100 == 0)
-        {
-            if (year % 400 == 0)
-                return true;
-            return false;
-        }
-        return true;
-    }
-    return false;
+sampleCat* catFunTwo(sampleCat *theCat){
+    std::cout << "Function2 return the Cat \n";
+    return theCat;
 }
 
+//-----------------------------------------------------------------------------
 void callSections(int choice)
 {
     switch (choice)
@@ -528,12 +570,19 @@ void callSections(int choice)
     case 12:
         section12();
         break;
+    case 13:
+        section13();
+        break;
+
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
         break;
     }
 }
 
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 int main()
 {
     std::cout << "Welcome to leaning C++ for 24 hours ^_^ \n";

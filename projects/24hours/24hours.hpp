@@ -80,6 +80,7 @@ class sampleCat
 {
 public:
     sampleCat();
+    sampleCat(sampleCat&);
     ~sampleCat();
     int GetAge() const { return *itsAge; };
     int GetWeight() const { return *itsWeight; };
