@@ -19,16 +19,6 @@ enum COLOR
 }; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
-inline int add(int, int); // defined the function as inline if we need to use it several times.
-bool isLeapYear(int);
-void matrixDisplay();
-void swapPointer(int *x, int *y);
-void swapReference(int &x, int &y);
-ERR_CODE factor(int , int&, int&);
-int loadInt();
-sampleCat catFunOne(sampleCat theCat);
-sampleCat* catFunTwo(sampleCat* theCat);
-
 // =======================================================================
 // Class: 24hours.hpp::Tricycle
 // object constructor.
@@ -164,6 +154,7 @@ sampleCat::~sampleCat(){
 }
 
 //=============================================================================
+inline int add(int, int); // defined the function as inline if we need to use it several times.
 void section2()
 {
     // C++ stand input/output test.
@@ -218,6 +209,7 @@ void section4()
 }
 
 //-----------------------------------------------------------------------------
+bool isLeapYear(int);
 void section5()
 {
     //
@@ -251,6 +243,7 @@ bool isLeapYear(int year)
 }
 
 //-----------------------------------------------------------------------------
+void matrixDisplay();
 void section6()
 {
     std::cout << "Section 6 control the flow of a program.\n";
@@ -311,6 +304,7 @@ void section8()
 }
 
 //-----------------------------------------------------------------------------
+int loadInt();
 void section9()
 {
     std::cout << "Section 9: Moving into Advanced Classes.\n";
@@ -455,6 +449,10 @@ void section11(){
 }
 
 //-----------------------------------------------------------------------------
+void swapPointer(int *x, int *y);
+void swapReference(int &x, int &y);
+ERR_CODE factor(int , int&, int&);
+
 void section12(){
     std::cout << "Section 12: Creating Reference.\n";
     int intOne;
@@ -507,16 +505,26 @@ ERR_CODE factor(int n, int &sqr, int &cube){
 }
 
 //-----------------------------------------------------------------------------
+sampleCat catFunOne(sampleCat theCat);
+sampleCat* catFunTwo(sampleCat* theCat);
+const sampleCat * const catFunThree(const sampleCat *const theCat);
+const sampleCat & catFunFour(const sampleCat & theCat);
+
 void section13(){
     std::cout << "Section 13: Passing be Reference efficiency.\n";
     std::cout << "Init a sample cat\n";
     
     sampleCat catA;
+    catA.SetAge(5);
     std::cout << "Call function one\n";
     catFunOne(catA);
     std::cout << "Call function two\n";
     catFunTwo(&catA);
-        
+    std::cout << "Cat A age = " << catA.GetAge() << "\n";
+    std::cout << "Call function three\n";
+    catFunThree(&catA);
+    std::cout << "Call function four\n";
+    catFunFour(catA);
 }
 
 sampleCat catFunOne(sampleCat theCat){
@@ -526,6 +534,16 @@ sampleCat catFunOne(sampleCat theCat){
 
 sampleCat* catFunTwo(sampleCat *theCat){
     std::cout << "Function2 return the Cat \n";
+    return theCat;
+}
+
+const sampleCat * const catFunThree(const sampleCat *const theCat){
+    std::cout << "In function3 age = " << theCat->GetAge() << "\n";
+    return theCat;
+}
+
+const sampleCat & catFunFour(const sampleCat & theCat){
+    std::cout << "In function3 age = " << theCat.GetAge() << "\n";
     return theCat;
 }
 
@@ -579,7 +597,6 @@ void callSections(int choice)
         break;
     }
 }
-
 
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
