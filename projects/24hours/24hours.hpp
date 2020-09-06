@@ -76,6 +76,19 @@ private:
     Point lowerR;
 };
 //=============================================================================
+class Rectangle2{
+    public:
+        Rectangle2(int w, int h);
+        ~Rectangle2(){};
+        void drawShape() const;
+        void drawShape(int w, int h) const;
+    private:
+        int width;
+        int height;
+
+};
+
+//=============================================================================
 class sampleCat
 {
 public:

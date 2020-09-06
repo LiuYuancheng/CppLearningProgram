@@ -546,6 +546,38 @@ const sampleCat & catFunFour(const sampleCat & theCat){
     std::cout << "In function3 age = " << theCat.GetAge() << "\n";
     return theCat;
 }
+//-----------------------------------------------------------------------------
+//Section 14: Calling advance function.
+Rectangle2::Rectangle2(int w, int h)
+{
+    width = w;
+    height = h;
+}
+
+void Rectangle2::drawShape() const
+{
+    drawShape(width, height);
+}
+
+void Rectangle2::drawShape(int w, int h) const
+{
+    for (int i = 0; i < h; i++ )
+    {
+        for (int j = 0; j < w; j++)
+        {
+            std::cout << "*";
+        }
+        std::cout << "\n";
+    }
+}
+
+void section14(){
+    Rectangle2 box(30, 5);
+    std::cout << "drawShape():\n";
+    box.drawShape();
+    std::cout << "\ndrawShape(40,6):\n";
+    box.drawShape(40, 6);
+}
 
 //-----------------------------------------------------------------------------
 void callSections(int choice)
@@ -591,7 +623,9 @@ void callSections(int choice)
     case 13:
         section13();
         break;
-
+    case 14:
+        section14();
+        break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
         break;
