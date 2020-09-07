@@ -19,140 +19,6 @@ enum COLOR
 }; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
-// =======================================================================
-// Class: 24hours.hpp::Tricycle
-// object constructor.
-Tricycle::Tricycle(int initialSpeed)
-{
-    std::cout << "Constructor: create the object. \n";
-    setSpeed(initialSpeed);
-}
-
-Tricycle::~Tricycle()
-{
-    std::cout << "Destructor: destroy the object. \n";
-    setSpeed(0);
-}
-
-// Set the speed.
-void Tricycle::setSpeed(int newSpeed)
-{
-    if (newSpeed >= 0)
-    {
-        speed = newSpeed;
-    }
-    else
-    {
-        std::cout << "The tricycle has stopped.\n";
-        speed = 0;
-    }
-}
-
-//=============================================================================
-Rectangle::Rectangle(int newTop, int newLeft, int newBtm, int newRight)
-{
-    top = newTop;
-    left = newLeft;
-    bottom = newBtm;
-    right = newRight;
-
-    upperL.setX(left);
-    upperL.setY(top);
-
-    upperR.setX(right);
-    upperR.setX(top);
-
-    lowerL.setX(left);
-    lowerL.setY(bottom);
-
-    lowerR.setX(right);
-    lowerR.setY(bottom);
-}
-
-void Rectangle::setTop(int newT)
-{
-    top = newT;
-    upperL.setY(top);
-    upperR.setY(top);
-}
-
-void Rectangle::setLeft(int newL)
-{
-    left = newL;
-    upperL.setX(left);
-    lowerL.setX(left);
-}
-
-void Rectangle::setBottom(int newB)
-{
-    bottom = newB;
-    lowerL.setY(bottom);
-    lowerR.setY(bottom);
-}
-
-void Rectangle::setRight(int newR)
-{
-    right = newR;
-    upperR.setX(right);
-    lowerR.setX(right);
-}
-
-void Rectangle::setUpperL(Point location)
-{
-    upperL = location;
-    upperR.setY(location.getY());
-    lowerL.setX(location.getX());
-    top = location.getY();
-    left = location.getX();
-}
-
-void Rectangle::setUpperR(Point location)
-{
-    upperR = location;
-    upperL.setY(location.getY());
-    lowerR.setX(location.getX());
-    top = location.getY();
-    right = location.getX();
-}
-
-void Rectangle::setLowerL(Point location)
-{
-    lowerL = location;
-    lowerR.setY(location.getY());
-    upperL.setX(location.getX());
-    bottom = location.getY();
-    left = location.getX();
-}
-
-void Rectangle::setLowerR(Point location)
-{
-    lowerR = location;
-    upperR.setX(location.getY());
-    lowerL.setY(location.getY());
-    bottom = location.getY();
-    right = location.getX();
-}
-
-//=============================================================================
-sampleCat::sampleCat(){
-    std::cout << " Instruction will be called when 'New' object is define.\n";
-    itsAge = new int(1);
-    itsWeight = new int(5);
-}
-
-sampleCat::sampleCat(sampleCat &)
-{
-    std::cout << " sample cat copy instructor.\n";
-    itsAge = new int(1);
-    itsWeight = new int(5);
-}
-
-sampleCat::~sampleCat(){
-    std::cout << " Desctruction  will be called when 'delete' the object.\n";
-    delete itsAge;
-    delete itsWeight;
-}
-
 //=============================================================================
 inline int add(int, int); // defined the function as inline if we need to use it several times.
 void section2()
@@ -293,6 +159,34 @@ void section7()
 }
 
 //-----------------------------------------------------------------------------
+// Class: 24hours.hpp::Tricycle
+// object constructor.
+Tricycle::Tricycle(int initialSpeed)
+{
+    std::cout << "Constructor: create the object. \n";
+    setSpeed(initialSpeed);
+}
+
+Tricycle::~Tricycle()
+{
+    std::cout << "Destructor: destroy the object. \n";
+    setSpeed(0);
+}
+
+// Set the speed.
+void Tricycle::setSpeed(int newSpeed)
+{
+    if (newSpeed >= 0)
+    {
+        speed = newSpeed;
+    }
+    else
+    {
+        std::cout << "The tricycle has stopped.\n";
+        speed = 0;
+    }
+}
+
 void section8()
 {
     std::cout << "Section 8: Creating and deleting the object.\n";
@@ -304,6 +198,90 @@ void section8()
 }
 
 //-----------------------------------------------------------------------------
+Rectangle::Rectangle(int newTop, int newLeft, int newBtm, int newRight)
+{
+    top = newTop;
+    left = newLeft;
+    bottom = newBtm;
+    right = newRight;
+
+    upperL.setX(left);
+    upperL.setY(top);
+
+    upperR.setX(right);
+    upperR.setX(top);
+
+    lowerL.setX(left);
+    lowerL.setY(bottom);
+
+    lowerR.setX(right);
+    lowerR.setY(bottom);
+}
+
+void Rectangle::setTop(int newT)
+{
+    top = newT;
+    upperL.setY(top);
+    upperR.setY(top);
+}
+
+void Rectangle::setLeft(int newL)
+{
+    left = newL;
+    upperL.setX(left);
+    lowerL.setX(left);
+}
+
+void Rectangle::setBottom(int newB)
+{
+    bottom = newB;
+    lowerL.setY(bottom);
+    lowerR.setY(bottom);
+}
+
+void Rectangle::setRight(int newR)
+{
+    right = newR;
+    upperR.setX(right);
+    lowerR.setX(right);
+}
+
+void Rectangle::setUpperL(Point location)
+{
+    upperL = location;
+    upperR.setY(location.getY());
+    lowerL.setX(location.getX());
+    top = location.getY();
+    left = location.getX();
+}
+
+void Rectangle::setUpperR(Point location)
+{
+    upperR = location;
+    upperL.setY(location.getY());
+    lowerR.setX(location.getX());
+    top = location.getY();
+    right = location.getX();
+}
+
+void Rectangle::setLowerL(Point location)
+{
+    lowerL = location;
+    lowerR.setY(location.getY());
+    upperL.setX(location.getX());
+    bottom = location.getY();
+    left = location.getX();
+}
+
+void Rectangle::setLowerR(Point location)
+{
+    lowerR = location;
+    upperR.setX(location.getY());
+    lowerL.setY(location.getY());
+    bottom = location.getY();
+    right = location.getX();
+}
+
 int loadInt();
 void section9()
 {
@@ -416,6 +394,25 @@ void section10()
 }
 
 //-----------------------------------------------------------------------------
+sampleCat::sampleCat(){
+    std::cout << " Instruction will be called when 'New' object is define.\n";
+    itsAge = new int(1);
+    itsWeight = new int(5);
+}
+
+sampleCat::sampleCat(sampleCat &)
+{
+    std::cout << " sample cat copy instructor.\n";
+    itsAge = new int(1);
+    itsWeight = new int(5);
+}
+
+sampleCat::~sampleCat(){
+    std::cout << " Desctruction  will be called when 'delete' the object.\n";
+    delete itsAge;
+    delete itsWeight;
+}
+
 void section11(){
     std::cout << "Section 11: Pointer and the usage.\n";
     std::cout << "sampleCat frisky;\n";
@@ -548,6 +545,8 @@ const sampleCat & catFunFour(const sampleCat & theCat){
 }
 //-----------------------------------------------------------------------------
 //Section 14: Calling advance function.
+
+// class Rectangle2
 Rectangle2::Rectangle2(int w, int h)
 {
     width = w;
@@ -559,8 +558,13 @@ void Rectangle2::drawShape() const
     drawShape(width, height);
 }
 
-void Rectangle2::drawShape(int w, int h) const
+void Rectangle2::drawShape(int w, int h, bool useCrtVal) const
 {
+    if (useCrtVal)
+    {
+        w = width;
+        h = height;
+    }
     for (int i = 0; i < h; i++ )
     {
         for (int j = 0; j < w; j++)
@@ -569,6 +573,24 @@ void Rectangle2::drawShape(int w, int h) const
         }
         std::cout << "\n";
     }
+    
+}
+
+// class Tricycle2
+Tricycle2::Tricycle2(){
+    speed = new int;
+    *speed = 5;
+}
+
+Tricycle2::Tricycle2(const Tricycle2& rhs){
+    speed = new int;
+    *speed = rhs.getSpeed();
+}
+
+Tricycle2::~Tricycle2(){
+    *speed = 0;
+    delete speed;
+    speed = NULL;
 }
 
 void section14(){
@@ -577,6 +599,18 @@ void section14(){
     box.drawShape();
     std::cout << "\ndrawShape(40,6):\n";
     box.drawShape(40, 6);
+    std::cout << "\ndrawShape(0,0,true):\n";
+    box.drawShape(0, 0, true);
+    std::cout << "Create trike name wichita";
+    Tricycle2 wichita;
+    wichita.pedal();
+    std::cout << "Create trike name dallas";
+    Tricycle2 dallas(wichita);
+    std::cout << "wichita.getSpeed():"<< wichita.getSpeed()<<"\n";
+    std::cout << "dallas.getSpeed():" << dallas.getSpeed() <<"\n";
+    wichita.setSpeed(10);
+    std::cout << "wichita.getSpeed():"<< wichita.getSpeed()<<"\n";
+    std::cout << "dallas.getSpeed():" << dallas.getSpeed() <<"\n";
 }
 
 //-----------------------------------------------------------------------------

@@ -26,6 +26,31 @@ public:
 private:
     int speed = 0;
 };
+//=============================================================================
+class Tricycle2
+{
+public:
+    Tricycle2();
+    Tricycle2(const Tricycle2 &);
+    ~Tricycle2();
+    int getSpeed() const { return *speed; };
+    void setSpeed(int s) { *speed = s; };
+    void pedal()
+    {
+        setSpeed(*speed + 1);
+        sleep(0.5);
+        std::cout << "nPedaling: increase speed to:" << getSpeed() << " mph\n";
+    };
+
+    void brake()
+    {
+        setSpeed(*speed - 1);
+        sleep(0.5);
+        std::cout << "nBrakeing: decrease speed to:" << getSpeed() << " mph\n";
+    };
+private:
+    int *speed;
+};
 
 //=============================================================================
 class Point
@@ -76,16 +101,17 @@ private:
     Point lowerR;
 };
 //=============================================================================
-class Rectangle2{
-    public:
-        Rectangle2(int w, int h);
-        ~Rectangle2(){};
-        void drawShape() const;
-        void drawShape(int w, int h) const;
-    private:
-        int width;
-        int height;
+class Rectangle2
+{
+public:
+    Rectangle2(int w, int h);
+    ~Rectangle2(){};
+    void drawShape() const;
+    void drawShape(int w, int h, bool useCrtVal = false) const;
 
+private:
+    int width;
+    int height;
 };
 
 //=============================================================================
