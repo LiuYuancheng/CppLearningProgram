@@ -136,11 +136,14 @@ class Counter
 {
 public:
     Counter();
+    Counter(int initVal);
     ~Counter();
     int getValue() { return val; };
     void setValue(int v) { val = v; };
     void increase() { ++val; };
-    const Counter &operator++();
+    const Counter operator+(const Counter & );
+    const Counter &operator++();   //prefix
+    const Counter operator++(int); //posfix
 
 private:
     int val;

@@ -616,12 +616,25 @@ void section14(){
 //-----------------------------------------------------------------------------
 //Section 15: Using Operator Overloading.
 Counter::Counter() : val(0) {}
+Counter::Counter(int initVal) : val(initVal) {}
 Counter::~Counter() { val = 0; }
+
+//const Counter Counter::operator+(const Counter& rhs)
+//{
+//    return Counter(val +rhs.getValue());
+//}
 
 const Counter &Counter::operator++()
 {
     ++val;
     return *this;
+}
+
+const Counter Counter::operator++(int v)
+{
+    Counter temp(*this);
+    ++val;
+    return temp;
 }
 
 void section15(){
@@ -631,9 +644,14 @@ void section15(){
     c.increase();
     std::cout << "c Counter Val = "<< c.getValue() <<"\n";
     ++c;
-    std::cout << "c Counter Val = "<< c.getValue() <<"\n";
+    std::cout << "++c Counter Val = "<< c.getValue() <<"\n";
+    c++;
+    std::cout << "c++ Counter Val = "<< c.getValue() <<"\n";
     Counter a = ++c;
     std::cout << "a Counter Val = "<< a.getValue() <<"\n";
+    std::cout << "c Counter Val = "<< c.getValue() <<"\n";
+    Counter b = c++;
+    std::cout << "b Counter Val = "<< a.getValue() <<"\n";
     std::cout << "c Counter Val = "<< c.getValue() <<"\n";
 }
 
