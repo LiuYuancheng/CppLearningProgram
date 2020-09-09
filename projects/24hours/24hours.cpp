@@ -619,10 +619,10 @@ Counter::Counter() : val(0) {}
 Counter::Counter(int initVal) : val(initVal) {}
 Counter::~Counter() { val = 0; }
 
-//const Counter Counter::operator+(const Counter& rhs)
-//{
-//    return Counter(val +rhs.getValue());
-//}
+const Counter Counter::operator+(const Counter& rhs)
+{
+    return Counter(val +rhs.getValue());
+}
 
 const Counter &Counter::operator++()
 {
@@ -653,6 +653,14 @@ void section15(){
     Counter b = c++;
     std::cout << "b Counter Val = "<< a.getValue() <<"\n";
     std::cout << "c Counter Val = "<< c.getValue() <<"\n";
+
+    std::cout << "Overload '+' operator\n";
+    Counter alpha(4), beta(13), gama;
+    gama = alpha + beta;
+    std::cout << "Alpha = "<< alpha.getValue() <<"\n";
+    std::cout << "beta = "<< beta.getValue() <<"\n";
+    std::cout << "gama = "<< gama.getValue() <<"\n";
+
 }
 
 //-----------------------------------------------------------------------------

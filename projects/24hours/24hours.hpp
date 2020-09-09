@@ -138,7 +138,7 @@ public:
     Counter();
     Counter(int initVal);
     ~Counter();
-    int getValue() { return val; };
+    int getValue() const { return val; };
     void setValue(int v) { val = v; };
     void increase() { ++val; };
     const Counter operator+(const Counter & );
