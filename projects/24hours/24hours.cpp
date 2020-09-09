@@ -594,6 +594,7 @@ Tricycle2::~Tricycle2(){
 }
 
 void section14(){
+    std::cout << "Section 14: Calling advance function.\n";
     Rectangle2 box(30, 5);
     std::cout << "drawShape():\n";
     box.drawShape();
@@ -611,6 +612,29 @@ void section14(){
     wichita.setSpeed(10);
     std::cout << "wichita.getSpeed():"<< wichita.getSpeed()<<"\n";
     std::cout << "dallas.getSpeed():" << dallas.getSpeed() <<"\n";
+}
+//-----------------------------------------------------------------------------
+//Section 15: Using Operator Overloading.
+Counter::Counter() : val(0) {}
+Counter::~Counter() { val = 0; }
+
+const Counter &Counter::operator++()
+{
+    ++val;
+    return *this;
+}
+
+void section15(){
+    std::cout << "Section 15: Using Operator Overloading.\n";
+    Counter c;
+    std::cout << "c Counter Val = "<< c.getValue() <<"\n";
+    c.increase();
+    std::cout << "c Counter Val = "<< c.getValue() <<"\n";
+    ++c;
+    std::cout << "c Counter Val = "<< c.getValue() <<"\n";
+    Counter a = ++c;
+    std::cout << "a Counter Val = "<< a.getValue() <<"\n";
+    std::cout << "c Counter Val = "<< c.getValue() <<"\n";
 }
 
 //-----------------------------------------------------------------------------
@@ -659,6 +683,9 @@ void callSections(int choice)
         break;
     case 14:
         section14();
+        break;
+    case 15:
+        section15();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";

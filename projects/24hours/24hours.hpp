@@ -130,3 +130,18 @@ private:
     int *itsAge;
     int *itsWeight;
 };
+
+//=============================================================================
+class Counter
+{
+public:
+    Counter();
+    ~Counter();
+    int getValue() { return val; };
+    void setValue(int v) { val = v; };
+    void increase() { ++val; };
+    const Counter &operator++();
+
+private:
+    int val;
+};
