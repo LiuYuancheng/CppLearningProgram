@@ -152,3 +152,49 @@ public:
 private:
     int val;
 };
+
+//=============================================================================
+enum BREED
+{
+    YORKIE,
+    CAIRN,
+    DANDIE,
+    SHETLAND,
+    DIBERMAN,
+    LAB
+};
+
+class Mammal
+{
+public:
+    Mammal();
+    ~Mammal();
+
+    int getAge() const { return age; };
+    void setAge(int newAge) { age = newAge; };
+
+    int getWeight() const { return weight; };
+    void setWeight(int newWeight) { weight = newWeight; };
+
+    void speak();
+    void sleep();
+
+private:
+    int age;
+    int weight;
+};
+
+class Dog : public Mammal
+{
+public:
+    Dog();
+    ~Dog();
+    BREED getBreed() const { return breed; };
+    void setBreed(BREED newBreed) { breed = newBreed; };
+
+    void wagTail();
+    void begForFood();
+
+protected:
+    BREED breed;
+};

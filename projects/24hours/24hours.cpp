@@ -698,6 +698,14 @@ void section15(){
 }
 
 //-----------------------------------------------------------------------------
+//Section 16 inheritance
+void section16(){
+
+
+
+}
+
+//-----------------------------------------------------------------------------
 void callSections(int choice)
 {
     switch (choice)
@@ -746,6 +754,9 @@ void callSections(int choice)
         break;
     case 15:
         section15();
+        break;
+    case 16:
+        section16();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
