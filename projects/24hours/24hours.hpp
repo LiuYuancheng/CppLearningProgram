@@ -48,6 +48,8 @@ public:
         sleep(0.5);
         std::cout << "nBrakeing: decrease speed to:" << getSpeed() << " mph\n";
     };
+    Tricycle2 operator=(const Tricycle2 &);
+
 private:
     int *speed;
 };
@@ -144,6 +146,8 @@ public:
     const Counter operator+(const Counter & );
     const Counter &operator++();   //prefix
     const Counter operator++(int); //posfix
+
+    operator unsigned int(); 
 
 private:
     int val;

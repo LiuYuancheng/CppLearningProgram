@@ -637,6 +637,22 @@ const Counter Counter::operator++(int v)
     return temp;
 }
 
+Counter::operator unsigned int(){
+    return val;
+}
+
+Tricycle2 Tricycle2::operator=(const Tricycle2 &rhs)
+{
+    if (this == &rhs)
+    {
+        return *this;
+    }
+    delete speed;
+    speed = new int;
+    *speed = rhs.getSpeed();
+    return *this;
+}
+
 void section15(){
     std::cout << "Section 15: Using Operator Overloading.\n";
     Counter c;
@@ -660,6 +676,24 @@ void section15(){
     std::cout << "Alpha = "<< alpha.getValue() <<"\n";
     std::cout << "beta = "<< beta.getValue() <<"\n";
     std::cout << "gama = "<< gama.getValue() <<"\n";
+
+    std::cout << "Overload '=' operator\n";
+    Tricycle2 wichita;
+    wichita.setSpeed(6);
+    std::cout << "wichita Speed : " << wichita.getSpeed() << "\n";
+    Tricycle2 dallas;
+    std::cout << "dallas Speed : " << dallas.getSpeed() << "\n";
+    wichita = dallas;
+    std::cout << "Copying dallas to wichita";
+    std::cout << "wichita Speed : " << wichita.getSpeed() << "\n";
+
+    std::cout << "Overload 'int' operator\n";
+    int intBata = 5;
+    Counter delta = intBata;
+    std::cout << "deta.getValue  = " << delta.getValue() << "\n";
+    Counter epsilon(19);
+    int zeta = epsilon;
+    std::cout << "zeta = " << zeta << "\n";
 
 }
 
