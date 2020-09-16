@@ -167,8 +167,15 @@ enum BREED
 class Mammal
 {
 public:
-    Mammal();
-    ~Mammal();
+    Mammal() : age(2), weight(5)
+    {
+        std::cout << "Mammal constructor \n";
+    };
+    Mammal(int newAge, int newWeight);
+    ~Mammal()
+    {
+        std::cout << "Mammal destructor \n";
+    };
 
     int getAge() const { return age; };
     void setAge(int newAge) { age = newAge; };
@@ -176,8 +183,10 @@ public:
     int getWeight() const { return weight; };
     void setWeight(int newWeight) { weight = newWeight; };
 
-    void speak();
-    void sleep();
+    void speak() const { std::cout << "Mammal sound!\n"; };
+    void sleep() const { std::cout << "Shhh, I'm sleeping \n"; };
+    void move() const { std::cout << "Mammal moved one step\n"; };
+    void move(int dist) const { std::cout << "Mammal moved " << dist << "meter\n"; };
 
 private:
     int age;
@@ -187,14 +196,24 @@ private:
 class Dog : public Mammal
 {
 public:
-    Dog();
-    ~Dog();
+    Dog() : Mammal(), breed(YORKIE)
+    {
+        std::cout << "Dog constructor \n";
+    };
+    Dog(int newAge, int newWeight);
+    Dog(BREED newBreed);
+    ~Dog()
+    {
+        std::cout << "Dog destructor \n";
+    };
     BREED getBreed() const { return breed; };
     void setBreed(BREED newBreed) { breed = newBreed; };
 
-    void wagTail();
-    void begForFood();
-
+    void wagTail() { std::cout << "Tail wagging!\n"; };
+    void begForFood() { std::cout << "Begging for food\n"; };
+    void speak() const { std::cout << "Woof \n"; };
+    void move() const{ std::cout << "Dog moves 5 steps \n"; };
+    void move(int dist) const{ Mammal::move(dist);};
 protected:
     BREED breed;
 };

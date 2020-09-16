@@ -699,10 +699,38 @@ void section15(){
 
 //-----------------------------------------------------------------------------
 //Section 16 inheritance
-void section16(){
+Mammal::Mammal(int newAge, int newWeight) : age(newAge),
+                                            weight(newWeight)
+{
+    std::cout << "Mamal (int) constructor \n";
+}
 
+Dog::Dog(int newAge, int newWeight) : Mammal(newAge, newWeight)
+{
+    std::cout << "Dog (int) constructor \n";
+}
 
+Dog::Dog(BREED newBred) : breed(newBred)
+{
+    std::cout << "Dog (newBred) constructor \n";
+}
 
+void section16()
+{
+    std::cout << "Section 15: Extend class with inhertance.\n";
+    Dog fido;
+    fido.speak();
+    fido.sleep();
+    fido.wagTail();
+    fido.begForFood();
+    std::cout << "The fido's age is: " << fido.getAge() << "\n";
+    Dog rover(5, 10);
+    std::cout << "The rover's age is: " << rover.getAge() << "\n";
+    Dog yorke(DIBERMAN);
+    std::cout << "The yorke's breed is: " << yorke.getBreed() << "\n";
+    fido.move();
+    fido.Mammal::move(12);
+    fido.move(100);
 }
 
 //-----------------------------------------------------------------------------
