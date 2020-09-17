@@ -717,7 +717,7 @@ Dog::Dog(BREED newBred) : breed(newBred)
 
 void section16()
 {
-    std::cout << "Section 15: Extend class with inhertance.\n";
+    std::cout << "Section 16: Extend class with inhertance.\n";
     Dog fido;
     fido.speak();
     fido.sleep();
@@ -731,6 +731,49 @@ void section16()
     fido.move();
     fido.Mammal::move(12);
     fido.move(100);
+}
+
+//-----------------------------------------------------------------------------
+//Section 17 Polymorphism Implemented with virtual methods.
+
+void section17(){
+    std::cout << "Section 17: Polymorphism Implemented with virtual methodse.\n";
+    Mammal *pDog = new Dog;
+    pDog-> move();
+    pDog->speak();
+
+    Mammal * array[5];
+    Mammal *ptr;
+    int choice, i;
+    for (i = 0; i < 5; i++)
+    {
+        std::cout << "(1) dog, (2) cat, (3) horse, (4) pig: ";
+        std::cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            ptr = new Dog;
+            break;
+        case 2:
+            ptr = new Cat;
+            break;
+        case 3:
+            ptr = new Horse;
+            break;
+        case 4:
+            ptr = new Pig;
+            break;
+        default:
+            ptr = new Mammal;
+            break;
+        }
+        array[i] = ptr;
+    }
+
+    for (i = 0; i < 5; i++)
+    {
+        array[i]->speak();
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -785,6 +828,9 @@ void callSections(int choice)
         break;
     case 16:
         section16();
+        break;
+    case 17:
+        section17();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";

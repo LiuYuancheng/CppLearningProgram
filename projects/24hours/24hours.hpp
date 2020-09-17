@@ -183,7 +183,7 @@ public:
     int getWeight() const { return weight; };
     void setWeight(int newWeight) { weight = newWeight; };
 
-    void speak() const { std::cout << "Mammal sound!\n"; };
+    virtual void speak() const { std::cout << "Mammal sound!\n"; };
     void sleep() const { std::cout << "Shhh, I'm sleeping \n"; };
     void move() const { std::cout << "Mammal moved one step\n"; };
     void move(int dist) const { std::cout << "Mammal moved " << dist << "meter\n"; };
@@ -216,4 +216,23 @@ public:
     void move(int dist) const{ Mammal::move(dist);};
 protected:
     BREED breed;
+};
+
+class Cat : public Mammal
+{
+
+public:
+    void speak() const { std::cout << "Meow\n"; };
+};
+
+class Horse : public Mammal
+{
+public:
+    void speak() const { std::cout << "Whinny\n"; };
+};
+
+class Pig : public Mammal
+{
+public:
+    void speak() const { std::cout << "Oink\n"; };
 };
