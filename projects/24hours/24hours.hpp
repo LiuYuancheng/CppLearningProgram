@@ -171,8 +171,9 @@ public:
     {
         std::cout << "Mammal constructor \n";
     };
+    Mammal(const Mammal &rhs);
     Mammal(int newAge, int newWeight);
-    ~Mammal()
+    virtual ~Mammal()
     {
         std::cout << "Mammal destructor \n";
     };
@@ -184,6 +185,8 @@ public:
     void setWeight(int newWeight) { weight = newWeight; };
 
     virtual void speak() const { std::cout << "Mammal sound!\n"; };
+    virtual Mammal *clone() { return new Mammal(*this); };
+
     void sleep() const { std::cout << "Shhh, I'm sleeping \n"; };
     void move() const { std::cout << "Mammal moved one step\n"; };
     void move(int dist) const { std::cout << "Mammal moved " << dist << "meter\n"; };
@@ -202,18 +205,22 @@ public:
     };
     Dog(int newAge, int newWeight);
     Dog(BREED newBreed);
-    ~Dog()
+    Dog(const Dog &rhs);
+    virtual ~Dog()
     {
         std::cout << "Dog destructor \n";
     };
     BREED getBreed() const { return breed; };
     void setBreed(BREED newBreed) { breed = newBreed; };
 
+    virtual Mammal *clone() { return new Dog(*this); };
+
     void wagTail() { std::cout << "Tail wagging!\n"; };
     void begForFood() { std::cout << "Begging for food\n"; };
     void speak() const { std::cout << "Woof \n"; };
-    void move() const{ std::cout << "Dog moves 5 steps \n"; };
-    void move(int dist) const{ Mammal::move(dist);};
+    void move() const { std::cout << "Dog moves 5 steps \n"; };
+    void move(int dist) const { Mammal::move(dist); };
+
 protected:
     BREED breed;
 };
@@ -222,7 +229,17 @@ class Cat : public Mammal
 {
 
 public:
+    Cat()
+    {
+        std::cout << "Cat constructor \n";
+    };
+    virtual ~Cat()
+    {
+        std::cout << "Cat destructor \n";
+    };
+
     void speak() const { std::cout << "Meow\n"; };
+    virtual Mammal *clone() { return new Cat(*this); };
 };
 
 class Horse : public Mammal

@@ -736,43 +736,131 @@ void section16()
 //-----------------------------------------------------------------------------
 //Section 17 Polymorphism Implemented with virtual methods.
 
-void section17(){
+enum ANIMALS
+{
+    MAMMAL,
+    DOG,
+    CAT
+};
+const int numAnimalType = 3;
+
+Mammal::Mammal(const Mammal &rhs) : age(rhs.getAge())
+{
+    std::cout << "Mammal copy constructor\n";
+}
+
+Dog::Dog(const Dog &rhs) : Mammal(rhs)
+{
+    std::cout << "Dog copy constructor\n";
+}
+
+Cat::Cat(const Cat &rhs) : Mammal(rhs)
+{
+    std::cout << "Cat copy constructor\n";
+}
+
+void valueFunc(Mammal mammalVal)
+{
+    mammalVal.speak();
+}
+
+void ptrFunc(Mammal *pMammal)
+{
+    pMammal->speak();
+}
+
+void refFunc(Mammal &rMammal)
+{
+    rMammal.speak();
+}
+
+void section17()
+{
     std::cout << "Section 17: Polymorphism Implemented with virtual methodse.\n";
     Mammal *pDog = new Dog;
-    pDog-> move();
+    pDog->move();
     pDog->speak();
-
-    Mammal * array[5];
-    Mammal *ptr;
-    int choice, i;
-    for (i = 0; i < 5; i++)
+    int funcNum = 0;
+    std::cout << "Input the test you want to do: \n1. virtual function\n 2.Slicing\n3.virtual contructor \n";
+    std::cin >> funcNum;
+    if (funcNum == 0)
     {
-        std::cout << "(1) dog, (2) cat, (3) horse, (4) pig: ";
-        std::cin >> choice;
-        switch (choice)
+        Mammal *array[5];
+        Mammal *ptr;
+        int choice, i;
+        for (i = 0; i < 5; i++)
         {
-        case 1:
-            ptr = new Dog;
-            break;
-        case 2:
-            ptr = new Cat;
-            break;
-        case 3:
-            ptr = new Horse;
-            break;
-        case 4:
-            ptr = new Pig;
-            break;
-        default:
-            ptr = new Mammal;
-            break;
+            std::cout << "(1) dog, (2) cat, (3) horse, (4) pig: ";
+            std::cin >> choice;
+            switch (choice)
+            {
+            case 1:
+                ptr = new Dog;
+                break;
+            case 2:
+                ptr = new Cat;
+                break;
+            case 3:
+                ptr = new Horse;
+                break;
+            case 4:
+                ptr = new Pig;
+                break;
+            default:
+                ptr = new Mammal;
+                break;
+            }
+            array[i] = ptr;
         }
-        array[i] = ptr;
-    }
 
-    for (i = 0; i < 5; i++)
+        for (i = 0; i < 5; i++)
+        {
+            array[i]->speak();
+        }
+    }
+    else if (funcNum == 1)
     {
-        array[i]->speak();
+        std::cout << "slicing test:";
+        Mammal *ptr1 = 0;
+        int choice1;
+        while (true)
+        {
+            bool fQuit = false;
+            std::cout << "(1) dog, (2)cat, (0)quit:";
+            std::cin >> choice1;
+            switch (choice1)
+            {
+            case 0:
+                fQuit = true;
+                break;
+            case 1:
+                ptr1 = new Dog;
+                break;
+            case 2:
+                ptr1 = new Cat;
+                break;
+            default:
+                ptr1 = new Mammal;
+                break;
+            }
+
+            if (fQuit)
+                break;
+            ptrFunc(ptr1);
+            refFunc(*ptr1);
+            valueFunc(*ptr1);
+        }
+    }
+    else if (funcNum == 3)
+    {
+        Mammal *array[numAnimalType];
+        Mammal *ptr;
+        int choice, i;
+        for(i=0; i<numAnimalType; i++){
+            
+
+        }
+
     }
 }
 
