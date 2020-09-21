@@ -781,7 +781,7 @@ void section17()
     pDog->move();
     pDog->speak();
     int funcNum = 0;
-    std::cout << "Input the test you want to do: \n1. virtual function\n 2.Slicing\n3.virtual contructor \n";
+    std::cout << "Input the test you want to do: \n1. virtual function\n2.Slicing\n3.virtual contructor \n";
     std::cin >> funcNum;
     if (funcNum == 0)
     {
@@ -856,11 +856,34 @@ void section17()
         Mammal *array[numAnimalType];
         Mammal *ptr;
         int choice, i;
-        for(i=0; i<numAnimalType; i++){
-            
-
+        for (i = 0; i < numAnimalType; i++)
+        {
+            std::cout << "(1) dog, (2) cat, (3) mammal";
+            std::cin >> choice;
+            switch (choice)
+            {
+            case DOG:
+                ptr = new Dog;
+                break;
+            case CAT:
+                ptr = new Cat;
+                break;
+            default:
+                ptr = new Mammal;
+                break;
+            }
+            array[i] = ptr;
         }
-
+        Mammal *otherArray[numAnimalType];
+        for (i = 0; i < numAnimalType; i++)
+        {
+            array[i]->speak();
+            otherArray[i] = array[i]->clone();
+        }
+        for (i = 0; i < numAnimalType; i++)
+        {
+            otherArray[i]->speak();
+        }
     }
 }
 
@@ -934,7 +957,7 @@ int main()
     int choice = 0;
     do
     {
-        std::cout << "Enter the section number(2-8) you want to check the test code, 0 for end: ";
+        std::cout << "Enter the section number(1-17) you want to check the test code, 0 for end: ";
         std::cin >> choice;
         callSections(choice);
     } while (choice != 0);

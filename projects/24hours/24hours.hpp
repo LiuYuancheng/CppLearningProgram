@@ -233,6 +233,7 @@ public:
     {
         std::cout << "Cat constructor \n";
     };
+    Cat(const Cat &rhs);
     virtual ~Cat()
     {
         std::cout << "Cat destructor \n";
