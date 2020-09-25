@@ -886,6 +886,45 @@ void section17()
         }
     }
 }
+//-----------------------------------------------------------------------------
+//Section 18 Make use of advannced polymorphism
+void section18(){
+    std::cout << "Section 18: Make use of advannced polymorphism.\n";
+    const int numMammal = 3;
+    Mammal *zoo[numMammal];
+    Mammal *pMamml;
+    int choice, i;
+    for (i = 0; i < numMammal; i++)
+    {
+        std::cout << "(1) Dog, (2) Cat : ";
+        std::cin >> choice;
+        if (choice == 1)
+        {
+            pMamml = new Dog;
+        }
+        else
+        {
+            pMamml = new Cat;
+        }
+        zoo[i] = pMamml;
+    }
+
+    for (i = 0; i < numMammal; i++)
+    {
+        zoo[i]->speak();
+        Cat *pRealCat = dynamic_cast<Cat *>(zoo[i]);
+        if (pRealCat)
+        {
+            pRealCat->purr();
+        }
+        else
+        {
+            std::cout << "Zoo[" << i << "]" << zoo[i] << "is not a Cat\n";
+        }
+        delete zoo[i];
+        std::cout << "\n";
+    }
+}
 
 //-----------------------------------------------------------------------------
 void callSections(int choice)
@@ -942,6 +981,9 @@ void callSections(int choice)
         break;
     case 17:
         section17();
+        break;
+    case 18:
+        section18();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";

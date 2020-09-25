@@ -234,12 +234,13 @@ public:
         std::cout << "Cat constructor \n";
     };
     Cat(const Cat &rhs);
-    virtual ~Cat()
+    ~Cat()
     {
         std::cout << "Cat destructor \n";
     };
 
     void speak() const { std::cout << "Meow\n"; };
+    void purr() const {std::cout << "Rrrrrrrrrrrrr~\n";};
     virtual Mammal *clone() { return new Cat(*this); };
 };
 
