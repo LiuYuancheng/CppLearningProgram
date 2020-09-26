@@ -261,17 +261,21 @@ class Shape
 {
 public:
     Shape(){};
-    ~Shape(){};
-    virtual long getArea() { return -1; };
-    virtual long getPerim() { return -1; };
-    virtual void draw(){};
+    virtual ~Shape(){};
+    virtual long getArea() = 0;
+    virtual long getPerim() = 0;
+    virtual void draw() = 0;
 };
+
+void Shape::draw(){
+    std::cout << "Abstract drawing mechanism! \n";
+}
 
 class Circle : public Shape
 {
 public:
     Circle(int newRadius) : radius(newRadius){};
-    ~Circle();
+    ~Circle(){};
     long getArea() { return M_PI * radius * radius; };
     long getPerim() { return 2 * M_PI * radius; };
     void draw();
@@ -313,4 +317,119 @@ public:
     {
         return 4 * getLength();
     }
+};
+//=============================================================================
+enum COLOR
+{
+    RED,
+    BLUE,
+    GREEN,
+    Red,
+    Green,
+    Blue,
+    Yellow,
+    White,
+    Black,
+    Brown
+};
+
+class Animal
+{
+public:
+    Animal(int);
+    virtual ~Animal() { std::cout << "Animal desctructor.\n"; };
+    virtual int getAge() const { return age; };
+    virtual void setAge(int newAge) { age = newAge; };
+    virtual void sleep() const = 0;
+    virtual void eat() const = 0;
+    virtual void reproduce() const = 0;
+    virtual void move() const = 0;
+    virtual void speak() const = 0;
+
+private:
+    int age;
+};
+
+Animal::Animal(int newAge) : age(newAge)
+{
+    std::cout << "Animal constructor. \n";
+}
+
+class A_Mammal : public Animal
+{
+public:
+    A_Mammal(int newAge) : Animal(newAge)
+    {
+        std::cout << "A_Mammal constructor.\n";
+    }
+    ~A_Mammal()
+    {
+        std::cout << "A_Mammal desctructor.\n";
+    }
+    virtual void reproduce()
+    {
+        std::cout << "A_Mammal reproduction \n";
+    }
+};
+
+class A_Fish : public Animal
+{
+public:
+    A_Fish(int newAge) : Animal(newAge)
+    {
+        std::cout << "A_Fish constructor.\n";
+    };
+    ~A_Fish()
+    {
+        std::cout << "A_Fish destructor.\n";
+    };
+    virtual void sleep() const { std::cout << "A_Fish sleep.\n"; };
+    virtual void eat() const { std::cout << "A_Fish eat.\n"; };
+    virtual void reproduce() const { std::cout << "A_Fish reproduce.\n"; };
+    virtual void move() const { std::cout << "A_Fish move.\n"; };
+    virtual void speak() const {};
+};
+
+class A_Horse : public A_Mammal
+{
+public:
+    A_Horse(int newAge, COLOR newColor) : A_Mammal(newAge), color(newColor)
+    {
+        std::cout << "A_Horse constructor.\n";
+    };
+    ~A_Horse()
+    {
+        std::cout << "A_Horse destructor.\n";
+    };
+    virtual COLOR getColor() { return color; };
+    virtual void sleep() const { std::cout << "A_Horse sleep.\n"; };
+    virtual void eat() const { std::cout << "A_Horse eat.\n"; };
+    virtual void reproduce() const { std::cout << "A_Horse reproduce.\n"; };
+    virtual void move() const { std::cout << "A_Horse move.\n"; };
+    virtual void speak() const { std::cout << "A_Horse speak.\n"; };
+
+private:
+    COLOR color;
+};
+
+class A_Dog : public A_Mammal
+{
+public:
+    A_Dog(int newAge, COLOR newColor) : A_Mammal(newAge), color(newColor)
+    {
+        std::cout << "A_Dog constructor.\n";
+    };
+    ~A_Dog()
+    {
+        std::cout << "A_Horse destructor.\n";
+    };
+    virtual COLOR getColor(){return color;};
+    virtual void sleep() const { std::cout << "A_Dog sleep.\n"; };
+    virtual void eat() const { std::cout << "A_Dog eat.\n"; };
+    virtual void reproduce() const { std::cout << "A_Dog reproduce.\n"; };
+    virtual void move() const { std::cout << "A_Dog move.\n"; };
+    virtual void speak() const { std::cout << "A_Dog speak.\n"; };
+
+private:
+    COLOR color;
 };

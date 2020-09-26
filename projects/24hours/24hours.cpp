@@ -11,12 +11,6 @@ enum ERR_CODE{
     ERROR
 };
 
-enum COLOR
-{
-    RED,
-    BLUE,
-    GREEN
-}; // default re
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
 //=============================================================================
@@ -892,6 +886,7 @@ void section17()
 void Circle::draw()
 {
     std::cout << "Circle drawing routine here \n";
+    Shape::draw();
 }
 
 void Rectangle3::draw()
@@ -904,9 +899,11 @@ void Rectangle3::draw()
         }
         std::cout << "\n";
     }
+    Shape::draw();
 }
 
-void section18(){
+void section18()
+{
     std::cout << "Section 18: Make use of advannced polymorphism.\n";
     const int numMammal = 3;
     Mammal *zoo[numMammal];
@@ -971,6 +968,42 @@ void section18(){
         if (fQuit)
             break;
         sp->draw();
+        std::cout << "\n";
+    }
+
+    std::cout << "Section 18: Abstract data type 2:.\n";
+    Animal *pAnimal = 0;
+    fQuit = false;
+    while (1)
+    {
+        std::cout << "(1) A_Dog, (2) A_Horse, (3) A_Fish, (0) Quite \n";
+        std::cin >> choice;
+        switch (choice)
+        {
+        case 0:
+            fQuit = true;
+            break;
+        case 1:
+            pAnimal = new A_Dog(5, Brown);
+            break;
+        case 2:
+            pAnimal = new A_Horse(4, Black);
+            break;
+        case 3:
+            pAnimal = new A_Fish(5);
+            break;
+        default:
+            fQuit = true;
+            break;
+        }
+        if (fQuit)
+            break;
+        pAnimal->speak();
+        pAnimal->eat();
+        pAnimal->reproduce();
+        pAnimal->move();
+        pAnimal->sleep();
+        delete pAnimal;
         std::cout << "\n";
     }
 }
