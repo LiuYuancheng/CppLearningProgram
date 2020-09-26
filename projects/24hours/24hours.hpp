@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unistd.h>
+#include <math.h>
 
 //=============================================================================
 class Tricycle
@@ -254,4 +255,62 @@ class Pig : public Mammal
 {
 public:
     void speak() const { std::cout << "Oink\n"; };
+};
+//=============================================================================
+class Shape
+{
+public:
+    Shape(){};
+    ~Shape(){};
+    virtual long getArea() { return -1; };
+    virtual long getPerim() { return -1; };
+    virtual void draw(){};
+};
+
+class Circle : public Shape
+{
+public:
+    Circle(int newRadius) : radius(newRadius){};
+    ~Circle();
+    long getArea() { return M_PI * radius * radius; };
+    long getPerim() { return 2 * M_PI * radius; };
+    void draw();
+
+private:
+    int radius;
+    int circumference;
+};
+
+class Rectangle3 : public Shape
+{
+public:
+    Rectangle3(int w, int l) : width(w), length(l){};
+    virtual ~Rectangle3(){};
+    virtual long getArea() { return width * length; };
+    virtual long getPerim() { return 2 * (width + length); };
+    virtual int getWidth() { return width; };
+    virtual int getLength() { return length; };
+    virtual void draw();
+
+private:
+    int width;
+    int length;
+};
+
+class Square : public Rectangle3
+{
+public:
+    Square(int len) : Rectangle3(len, len){};
+    Square(int width, int len) : Rectangle3(width, len)
+    {
+        if (getWidth() != getLength())
+        {
+            std::cout << "Not a square, create a rectangle object.\n";
+        }
+    };
+    ~Square() {}
+    long getPerim()
+    {
+        return 4 * getLength();
+    }
 };

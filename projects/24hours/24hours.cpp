@@ -888,6 +888,24 @@ void section17()
 }
 //-----------------------------------------------------------------------------
 //Section 18 Make use of advannced polymorphism
+
+void Circle::draw()
+{
+    std::cout << "Circle drawing routine here \n";
+}
+
+void Rectangle3::draw()
+{
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            std::cout << "x";
+        }
+        std::cout << "\n";
+    }
+}
+
 void section18(){
     std::cout << "Section 18: Make use of advannced polymorphism.\n";
     const int numMammal = 3;
@@ -922,6 +940,37 @@ void section18(){
             std::cout << "Zoo[" << i << "]" << zoo[i] << "is not a Cat\n";
         }
         delete zoo[i];
+        std::cout << "\n";
+    }
+
+    std::cout << "Section 18: Abstract data type:.\n";
+    bool fQuit = false;
+    Shape *sp;
+    while (1)
+    {
+        std::cout << "(1) Circle, (2) Rectangle, (3)Square, (0) Quite \n";
+        std::cin >> choice;
+        switch (choice)
+        {
+        case 0:
+            fQuit = true;
+            break;
+        case 1:
+            sp = new Circle(5);
+            break;
+        case 2:
+            sp = new Rectangle3(4, 6);
+            break;
+        case 3:
+            sp = new Square(5);
+            break;
+        default:
+            fQuit = true;
+            break;
+        }
+        if (fQuit)
+            break;
+        sp->draw();
         std::cout << "\n";
     }
 }
