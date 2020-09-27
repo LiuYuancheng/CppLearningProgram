@@ -1009,6 +1009,28 @@ void section18()
 }
 
 //-----------------------------------------------------------------------------
+//Section 19 Stroing information in linked lists.
+void section19()
+{
+    std::cout << "Section 19: Storing information in linked list.\n";
+    Data *pdata;
+    int val;
+    LinkedList ll;
+    while (true)
+    {
+        std::cout << "Input value(0 for stop):";
+        std::cin >> val;
+        if (!val)
+            break;
+        pdata = new Data(val);
+        ll.insert(pdata);
+    }
+
+    std::cout << "Linked list:\n";
+    ll.showAll();
+}
+
+//-----------------------------------------------------------------------------
 void callSections(int choice)
 {
     switch (choice)
@@ -1066,6 +1088,9 @@ void callSections(int choice)
         break;
     case 18:
         section18();
+        break;
+    case 19:
+        section19();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
