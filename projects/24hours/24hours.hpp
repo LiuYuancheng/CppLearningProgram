@@ -518,6 +518,7 @@ InternalNode::InternalNode(Data *newData, Node *newNode) : data(newData), next(n
 
 Node *InternalNode::insert(Data *otherdata)
 {
+    std::cout << "x";
     int result = data->compare(*otherdata);
     switch (result)
     {
@@ -551,6 +552,7 @@ private:
 
 Node *TailNode::insert(Data *data)
 {
+    std::cout << ">";
     InternalNode *dataNode = new InternalNode(data, this);
     return dataNode;
 }
@@ -576,7 +578,7 @@ HeadNode::HeadNode()
 
 Node *HeadNode::insert(Data *data)
 {
-    next->insert(data);
+    next = next->insert(data);
     return this;
 }
 

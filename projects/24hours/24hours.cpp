@@ -106,7 +106,7 @@ bool isLeapYear(int year)
 void matrixDisplay();
 void section6()
 {
-    std::cout << "Section 6 control the flow of a program.\n";
+    std::cout << "Section 6 Control the flow of a program.\n";
 
     int count = 60;
     do
@@ -502,7 +502,7 @@ const sampleCat * const catFunThree(const sampleCat *const theCat);
 const sampleCat & catFunFour(const sampleCat & theCat);
 
 void section13(){
-    std::cout << "Section 13: Passing be Reference efficiency.\n";
+    std::cout << "Section 13: Passing by Reference efficiency.\n";
     std::cout << "Init a sample cat\n";
     
     sampleCat catA;
@@ -711,7 +711,7 @@ Dog::Dog(BREED newBred) : breed(newBred)
 
 void section16()
 {
-    std::cout << "Section 16: Extend class with inhertance.\n";
+    std::cout << "Section 16: Extend class with inheritance.\n";
     Dog fido;
     fido.speak();
     fido.sleep();
@@ -881,7 +881,7 @@ void section17()
     }
 }
 //-----------------------------------------------------------------------------
-//Section 18 Make use of advannced polymorphism
+//Section 18 Make use of advanced  polymorphism
 
 void Circle::draw()
 {
@@ -904,7 +904,7 @@ void Rectangle3::draw()
 
 void section18()
 {
-    std::cout << "Section 18: Make use of advannced polymorphism.\n";
+    std::cout << "Section 18: Make use of advanced  polymorphism.\n";
     const int numMammal = 3;
     Mammal *zoo[numMammal];
     Mammal *pMamml;
@@ -1009,10 +1009,10 @@ void section18()
 }
 
 //-----------------------------------------------------------------------------
-//Section 19 Stroing information in linked lists.
+//Section 19 Storing  information in linked lists.
 void section19()
 {
-    std::cout << "Section 19: Storing information in linked list.\n";
+    std::cout << "Section 19: Storing  information in linked list.\n";
     Data *pdata;
     int val;
     LinkedList ll;
