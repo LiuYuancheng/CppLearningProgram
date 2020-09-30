@@ -606,3 +606,19 @@ void LinkedList::insert(Data *pdata)
 {
     head->insert(pdata);
 }
+//=============================================================================
+class StCat
+{
+public:
+    StCat(int newAge = 1):age(newAge) { catCount++; };
+    virtual ~StCat() { catCount--; };
+    virtual int getAge() { return age; };
+    virtual void setAge(int newAge) { age = newAge; };
+    static int getCatCount(){return catCount;};
+private:
+    int age;
+    static int catCount;
+};
+
+int StCat::catCount = 0;
+

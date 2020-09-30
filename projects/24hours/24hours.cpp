@@ -1031,6 +1031,29 @@ void section19()
 }
 
 //-----------------------------------------------------------------------------
+//Section 20 Using special classes, function and pointers.
+void section20()
+{
+    std::cout << "Section 20: Using special classes, function and pointers.\n";
+    const int maxCat = 5;
+    StCat *catHouse[maxCat];
+    int i = 0;
+    for (i = 0; i < maxCat; i++)
+    {   
+        std::cout << "There are " << StCat::getCatCount() << "cats created. \n";
+        catHouse[i] = new StCat(i);
+    }
+
+    for (i = 0; i < maxCat; i++)
+    {
+        std::cout << "There are " << StCat::getCatCount() << "cats left. \n";
+        std::cout << "Deleting Stcat age = " << catHouse[i]->getAge() << ". \n";
+        delete catHouse[i];
+        catHouse[i] = 0;
+    }
+}
+
+//-----------------------------------------------------------------------------
 void callSections(int choice)
 {
     switch (choice)
@@ -1091,6 +1114,9 @@ void callSections(int choice)
         break;
     case 19:
         section19();
+        break;
+    case 20:
+        section20();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";

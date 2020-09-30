@@ -58,7 +58,7 @@ Enter the selection:
 | 17           | Polymorphism Implemented with virtual methods.      |
 | 18           | Make use of advanced polymorphism                   |
 | 19           | Storing information in linked lists.                |
-|              |                                                     |
+| 20           | Using special classes, function and pointers        |
 |              |                                                     |
 |              |                                                     |
 |              |                                                     |
