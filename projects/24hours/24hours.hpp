@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <math.h>
+#include <string.h>
 
 //=============================================================================
 class Tricycle
@@ -622,3 +623,24 @@ private:
 
 int StCat::catCount = 0;
 
+//=============================================================================
+class String
+{
+public:
+    String();
+    String(const char *const);
+    String(const String &);
+    ~String();
+
+    // overload operators
+    char &operator[](int offset);
+    char operator[](int offset) const;
+    String operator+(const String &);
+    void operator+=(const String &);
+    String &operator=(const String &);
+
+private:
+    String(int);
+    char *value;
+    int len;
+};
