@@ -624,3 +624,46 @@ private:
 int StCat::catCount = 0;
 
 //=============================================================================
+class Employee
+{
+public:
+    Employee() : firstName(""), lastName(""), address(""), salary(0){};
+    Employee(char * fname, char * lname, char *addr, long sal) : firstName(fname), lastName(lname), address(addr), salary(sal){};
+    Employee(const Employee &rhs) : firstName(rhs.getFirstName()),
+                                    lastName(rhs.getLastName()),
+                                    address(rhs.getAddress()),
+                                    salary(rhs.getSalary()){};
+    ~Employee(){};
+
+    Employee &operator=(const Employee &);
+
+    const String &getFirstName() const { return firstName; };
+    String &getFirstName(){return firstName;};
+    const String &getLastName() const { return lastName; };
+    String &getLastName(){return lastName;};
+    const String &getAddress() const { return address; };
+    String &getAddress(){return address;};
+    long getSalary() const { return salary; };
+    
+    void setFirstName(const String &fname) { firstName = fname; };
+    void setLastName(const String &lname) { lastName = lname; };
+    void setAddress(const String &addr) { address = addr; };
+    void setSalary(long newSal) { salary = newSal; };
+
+private:
+    String firstName;
+    String lastName;
+    String address;
+    long salary;
+};
+
+Employee &Employee::operator=(const Employee &rhs)
+{
+    if (this == &rhs)
+        return *this;
+    firstName = rhs.getFirstName();
+    lastName = rhs.getLastName();
+    address = rhs.getAddress();
+    salary = rhs.getSalary();
+    return *this;
+}
