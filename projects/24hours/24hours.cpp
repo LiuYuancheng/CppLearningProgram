@@ -1051,6 +1051,18 @@ void section20()
         delete catHouse[i];
         catHouse[i] = 0;
     }
+
+    std::cout << "String class Employee test: \n";
+    Employee edie("Jane", "Doe", "1461 Shore Parkway", 20000.0);
+    edie.setSalary(54321.12);
+    String lastName("Levine");
+    edie.setLastName(lastName);
+    edie.setFirstName("Edythe");
+    std::cout << "Name: " << edie.getFirstName().getString() << " " << edie.getLastName().getString() << "\n";
+    String buffer = edie.getFirstName() + edie.getLastName();
+    std::cout << "Name: " << buffer.getString() << "\n";
+    std::cout << "Address: " << edie.getAddress().getString() << "\n";
+    std::cout << "Salary: " << edie.getSalary() << "\n";
 }
 
 //-----------------------------------------------------------------------------

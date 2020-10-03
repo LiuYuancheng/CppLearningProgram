@@ -43,6 +43,17 @@ String::String(int newLen)
     }
 }
 
+String::String(const char *const cString)
+{
+    len = strlen(cString);
+    value = new char[len + 1];
+    for (int i = 0; i < len; i++)
+    {
+        value[i] = cString[i];
+    }
+    value[len] = '\0';
+}
+
 String::String(const String &rhs)
 {
     len = rhs.getLen();
