@@ -1032,6 +1032,25 @@ void section19()
 
 //-----------------------------------------------------------------------------
 //Section 20 Using special classes, function and pointers.
+void squareR(int &rx, int &ry)
+{
+    rx *= rx;
+    ry *= ry;
+}
+
+void cubeR(int &rx, int &ry)
+{
+    rx = rx * rx * rx;
+    ry = ry * ry * ry;
+}
+
+void swapR(int &rx, int &ry)
+{
+    rx = rx + ry;
+    ry = rx - ry;
+    rx -= ry;
+}
+
 void section20()
 {
     std::cout << "Section 20: Using special classes, function and pointers.\n";
@@ -1063,6 +1082,37 @@ void section20()
     std::cout << "Name: " << buffer.getString() << "\n";
     std::cout << "Address: " << edie.getAddress().getString() << "\n";
     std::cout << "Salary: " << edie.getSalary() << "\n";
+
+    std::cout << "Pointer function test: \n";
+    void (*pFunc)(int &, int &);
+    bool fQuit = false;
+    int val1 = 1, val2 = 2;
+    int choice;
+    while (!fQuit)
+    {
+        std::cout << "0:Quit, 1:Square, 2:Cube, 3:Swap \n";
+        std::cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            pFunc = squareR;
+            break;
+        case 2:
+            pFunc = cubeR;
+            break;
+        case 3:
+            pFunc = swapR;
+            break;
+        default:
+            fQuit = true;
+            break;
+        }
+        if (fQuit)
+            break;
+        std::cout << "x : " << val1 << " y : " << val2 << "\n";
+        pFunc(val1, val2);
+        std::cout << "x : " << val1 << " y : " << val2 << "\n";
+    }
 }
 
 //-----------------------------------------------------------------------------
