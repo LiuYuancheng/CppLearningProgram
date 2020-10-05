@@ -15,13 +15,27 @@ enum ERR_CODE{
 
 void section1(){
     std::cout << "Section titles: \n \
-        2: C++ stand input/output test. \n \
-        3: C++ data type test: Creating Variable and Constants.\n \
-        4: Expression statement and operators.\n \
-        5: Parameters and Functions.\n \
-        6: Control the flow of a program. \n \
-        7: Array and string test.\n \
-        8: Creating and deleting the object. \n \
+        0 : Quit. \n \
+        1 : Show title messages. \n \
+        2 : C++ stand input/output test. \n \
+        3 : C++ data type test: creating variable and constants.\n \
+        4 : Expression statement and operators.\n \
+        5 : Parameters and functions.\n \
+        6 : Control the flow of a program. \n \
+        7 : Array and string test.\n \
+        8 : Creating and deleting the object. \n \
+        9 : Moving into advanced classes. \n \
+        10: Pointer and the usage. \n \
+        11: Advanced pointer and the usage. \n \
+        12: Creating reference. \n \
+        13: Passing by reference efficiency. \n \
+        14: Calling advance function. \n \
+        15: Using operator overloading. \n \
+        16: Extend class with inheritance. \n \
+        17: Polymorphism implemented with virtual methods. \n \
+        18: Make use of advanced polymorphism. \n \
+        19: Storing information in linked lists. \n \
+        20: Using special classes, function and pointers. \n \
     \n ";
 }
 
@@ -1077,6 +1091,8 @@ void printVals(void (*pFunc)(int &, int &), int &rx, int &ry){
         std::cout << "x : " << rx << " y : " << ry << "\n";
 }
 
+typedef void (Dog::*PDF)() const;
+
 void section20()
 {
     std::cout << "Section 20: Using special classes, function and pointers.\n";
@@ -1182,6 +1198,33 @@ void section20()
         }
     (ptr->*pMfunc)();
     delete ptr;
+    }
+
+    std::cout << "Array of pointer of member function test: \n";
+    const int maxFuns = 5;
+    PDF dogfuns[maxFuns] = {
+        &Dog::speak,
+        &Dog::sleep,
+        &Dog::move,
+        &Dog::wagTail,
+        &Dog::begForFood};
+
+    Dog *pDog = 0;
+    fQuit = false;
+    while (!fQuit)
+    {
+        std::cout << "0: Quit, 1: speak, 2: sleep, 3: move, 4: wagTail, 5: begForFood \n";
+        std::cin >> method;
+        if (method == 0 || method > 5)
+        {
+            break;
+        }
+        else
+        {
+            pDog = new Dog;
+            (pDog->*dogfuns[method - 1])();
+            delete pDog;
+        }
     }
 }
 
