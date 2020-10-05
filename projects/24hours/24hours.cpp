@@ -13,6 +13,18 @@ enum ERR_CODE{
 
 // In vscode select Terminal> Run build Task > C/C++:g++.exe build atice file to compile.
 
+void section1(){
+    std::cout << "Section titles: \n \
+        2: C++ stand input/output test. \n \
+        3: C++ data type test: Creating Variable and Constants.\n \
+        4: Expression statement and operators.\n \
+        5: Parameters and Functions.\n \
+        6: Control the flow of a program. \n \
+        7: Array and string test.\n \
+        8: Creating and deleting the object. \n \
+    \n ";
+}
+
 //=============================================================================
 inline int add(int, int); // defined the function as inline if we need to use it several times.
 void section2()
@@ -1051,6 +1063,20 @@ void swapR(int &rx, int &ry)
     rx -= ry;
 }
 
+void setValue(int &rx, int &ry)
+{
+    std::cout << "X : ";
+    std::cin >> rx;
+    std::cout << "Y : ";
+    std::cin >> ry;
+}
+
+void printVals(void (*pFunc)(int &, int &), int &rx, int &ry){
+        std::cout << "x : " << rx << " y : " << ry << "\n";
+        pFunc(rx, ry);
+        std::cout << "x : " << rx << " y : " << ry << "\n";
+}
+
 void section20()
 {
     std::cout << "Section 20: Using special classes, function and pointers.\n";
@@ -1058,7 +1084,7 @@ void section20()
     StCat *catHouse[maxCat];
     int i = 0;
     for (i = 0; i < maxCat; i++)
-    {   
+    {
         std::cout << "There are " << StCat::getCatCount() << "cats created. \n";
         catHouse[i] = new StCat(i);
     }
@@ -1090,7 +1116,7 @@ void section20()
     int choice;
     while (!fQuit)
     {
-        std::cout << "0:Quit, 1:Square, 2:Cube, 3:Swap \n";
+        std::cout << "0:Quit, 1:Square, 2:Cube, 3:Swap, 4:SetValue \n";
         std::cin >> choice;
         switch (choice)
         {
@@ -1103,15 +1129,59 @@ void section20()
         case 3:
             pFunc = swapR;
             break;
+        case 4:
+            pFunc = setValue;
+            break;
         default:
             fQuit = true;
             break;
         }
         if (fQuit)
             break;
-        std::cout << "x : " << val1 << " y : " << val2 << "\n";
-        pFunc(val1, val2);
-        std::cout << "x : " << val1 << " y : " << val2 << "\n";
+        printVals(pFunc, val1, val2);
+    }
+
+    std::cout << "Pointer to member function test: \n";
+    void (Mammal::*pMfunc)() const = 0;
+    Mammal *ptr = 0;
+    int animal;
+    int method;
+    fQuit = false;
+    while (!fQuit)
+    {
+        std::cout << "0: Quit, 1: Dog, 2: Cat, 3: Horse \n";
+        std::cin >> animal;
+        switch (animal)
+        {
+        case 1:
+            ptr = new Dog;
+            break;
+        case 2:
+            ptr = new Cat;
+            break;
+        case 3:
+            ptr = new Horse;
+            break;
+        default:
+            fQuit = true;
+            break;
+        }
+        if (fQuit)
+            break;
+
+        std::cout << "1: Speak, 2: Move \n";
+        std::cin >> method;
+        switch (method)
+        {
+        case 1:
+            pMfunc = &Mammal::speak;
+            break;
+        default:
+            pMfunc = &Mammal::move;
+            break;
+        }
+    (ptr->*pMfunc)();
+    delete ptr;
     }
 }
 
@@ -1123,6 +1193,9 @@ void callSections(int choice)
     case 0:
         std::cout << "no more test .... ";
         return;
+    case 1: 
+        section1();
+        break;
     case 2:
         section2();
         break;
@@ -1194,7 +1267,7 @@ int main()
     int choice = 0;
     do
     {
-        std::cout << "Enter the section number(1-17) you want to check the test code, 0 for end: ";
+        std::cout << "Enter the section number(2-20) you want to check the test code, 0 for end , 1 for help: ";
         std::cin >> choice;
         callSections(choice);
     } while (choice != 0);
