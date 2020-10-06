@@ -497,3 +497,57 @@ Employee &Employee::operator=(const Employee &rhs)
     salary = rhs.getSalary();
     return *this;
 }
+
+//=============================================================================
+class Condition
+{
+public:
+    Condition(){};
+    virtual ~Condition(){};
+    virtual void log() = 0;
+};
+
+class Normal : public Condition
+{
+public:
+    Normal() { log(); };
+    virtual ~Normal(){};
+    virtual void log(){std::cout << "Log: normal condition.\n";};
+};
+
+class Error : public Condition
+{
+public: 
+    Error(){log();};
+    virtual ~Error(){};
+    virtual void log(){std::cout << "Log: error condition.\n";};
+};
+
+class Alarm : public Condition
+{
+public:
+    Alarm(){log();};
+    virtual ~Alarm(){
+        log();
+        warn();
+    };
+    virtual void warn() { std::cout << "warning!\n"; };
+    virtual void log() { std::cout << "Alarm condition\n"; };
+    virtual void call() = 0;
+};
+
+class FireAlarm : public Alarm{
+public:
+    FireAlarm(){log();};
+    virtual ~FireAlarm(){};
+    virtual void call(){std::cout << "Calling fire deparment.\n";};
+    virtual void log(){std::cout << "Log: fire alarm condition.\n";};
+};
+
+
+
+
+
+
+
+

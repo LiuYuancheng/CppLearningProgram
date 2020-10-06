@@ -37,6 +37,7 @@ void section1(){
         19: Storing information in linked lists. \n \
         20: Using special classes, function and pointers. \n \
         21: Using new features of C++ 0X \n \
+        22: Employing OOP analysis and design. \n \
     \n ";
 }
 
@@ -1259,6 +1260,39 @@ void section21()
         std::cout << p << "\n";
     }
 }
+//-----------------------------------------------------------------------------
+// section 22: Employing OOP analysis and design.
+void section22()
+{
+    std::cout << "section 22: Employing OOP analysis and design \n";
+
+    std::cout << "Simulating Alarm system: \n";
+    auto input = 1;
+    Condition *pcond;
+    while (input)
+    {
+        std::cout << "0:Quie, 1:Normal, 2:On Fire -> \n";
+        std::cin >> input;
+        switch (input)
+        {
+        case 0:
+            break;
+        case 1:
+            pcond = new Normal;
+            delete pcond;
+            break;
+        case 2:
+            pcond = new FireAlarm;
+            delete pcond;
+            break;
+        default:
+            pcond = new Error;
+            delete pcond;
+            input = 0;
+            break;
+        }
+    }
+}
 
 //-----------------------------------------------------------------------------
 void callSections(int choice)
@@ -1330,6 +1364,9 @@ void callSections(int choice)
         break;
     case 21:
         section21();
+        break;
+    case 22: 
+        section22();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
