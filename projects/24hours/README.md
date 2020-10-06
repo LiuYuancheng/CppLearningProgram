@@ -12,12 +12,13 @@ This project is used test all the code in the C++ self learning box < Sams Teach
 
 ###### Program File List :
 
-| Program File | Execution Env | Description                                                  |
-| :----------- | ------------- | ------------------------------------------------------------ |
-| 24hours.cpp  | Win/Linux     | The main program to implement and test all the functions.    |
-| 25string.hpp | Win/Linux     | The String class implementation header file.                 |
-| 24hours.hpp  | Win/Linux     | The header file used by <24hours.cpp> which holds all the defined class code. |
-| 24hour.exe   | Win           | The execution file.                                          |
+| Program File   | Execution Env | Description                                                  |
+| :------------- | ------------- | ------------------------------------------------------------ |
+| 24hours.cpp    | Win/Linux     | The main program to implement and test all the functions.    |
+| 25string.hpp   | Win/Linux     | The String class implementation header file.                 |
+| 24hours.hpp    | Win/Linux     | The header file used by <24hours.cpp> which holds all the defined class code. |
+| 24linkList.hpp | Win/Linux     | The single chain linked list class implantation header file. |
+| 24hour.exe     | Win           | The execution file.                                          |
 
 ------
 
@@ -57,10 +58,10 @@ Enter the selection:
 | 15           | Using operator overloading.                         |
 | 16           | Extend class with inheritance.                      |
 | 17           | Polymorphism Implemented with virtual methods.      |
-| 18           | Make use of advanced polymorphism                   |
+| 18           | Make use of advanced polymorphism.                  |
 | 19           | Storing information in linked lists.                |
 | 20           | Using special classes, function and pointers.       |
-|              |                                                     |
+| 21           | Using new features of C++ 0X                        |
 |              |                                                     |
 |              |                                                     |
 

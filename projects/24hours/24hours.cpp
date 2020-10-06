@@ -36,6 +36,7 @@ void section1(){
         18: Make use of advanced polymorphism. \n \
         19: Storing information in linked lists. \n \
         20: Using special classes, function and pointers. \n \
+        21: Using new features of C++ 0X \n \
     \n ";
 }
 
@@ -1229,6 +1230,37 @@ void section20()
 }
 
 //-----------------------------------------------------------------------------
+// section 21: Using new features of C++ 0X
+constexpr double getPI()
+{
+    return (double)22 / 7;
+}
+
+void section21()
+{
+    std::cout << "section 21: Using new features of C++ 0X \n";
+    int val1 = 10, val2 = 20;
+    int *pointer1 = nullptr;
+    pointer1 = &val2;
+    val1 = *pointer1;
+    std::cout << "Value1 = " << val1 << "\n";
+
+    std::cout << "Auto data type test: \n";
+    int a = 1;
+    float b = 2.25F;
+    double c = 500 / 3.0;
+    auto result = a + b + c;
+    std::cout << "result : " << result << " \n";
+
+    std::cout << "Range based for loop: \n";
+    int postion[5] = {1, 2, 3, 4, 5};
+    for (int &p : postion)
+    {
+        std::cout << p << "\n";
+    }
+}
+
+//-----------------------------------------------------------------------------
 void callSections(int choice)
 {
     switch (choice)
@@ -1295,6 +1327,9 @@ void callSections(int choice)
         break;
     case 20:
         section20();
+        break;
+    case 21:
+        section21();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
