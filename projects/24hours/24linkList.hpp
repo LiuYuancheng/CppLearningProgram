@@ -1,3 +1,15 @@
+//-----------------------------------------------------------------------------
+// Name:        24linkList.hpp
+//
+// Purpose:     This module is used to provide a one way linked list to save and 
+//              sort the insert data.
+// Author:      Yuancheng Liu
+//
+// Created:     2020/08/02
+// Copyright:   N.A.
+// License:     YC
+//-----------------------------------------------------------------------------
+
 //=============================================================================
 enum
 {

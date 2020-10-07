@@ -5,6 +5,19 @@
 #include "24string.hpp"
 #include "24linkList.hpp"
 
+//-----------------------------------------------------------------------------
+// Name:        24hours.hpp
+//
+// Purpose:     The header file used by <24hours.cpp> which holds all the defined 
+//              class code.
+//              
+// Author:      Yuancheng Liu
+//
+// Created:     2020/08/02
+// Copyright:   N.A.
+// License:     YC
+//-----------------------------------------------------------------------------
+
 //=============================================================================
 class Tricycle
 {
@@ -544,10 +557,17 @@ public:
     virtual void log(){std::cout << "Log: fire alarm condition.\n";};
 };
 
+//=============================================================================
 
-
-
-
+enum SERVICE
+{
+    PostMaster,
+    Interchange,
+    Gmail,
+    Hotmail,
+    AOL,
+    Internet
+};
 
 
 

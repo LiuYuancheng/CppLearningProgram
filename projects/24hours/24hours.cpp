@@ -2,6 +2,19 @@
 #include <string.h>
 #include "24hours.hpp"
 
+//-----------------------------------------------------------------------------
+// Name:        24hours.hpp
+//
+// Purpose:     The main program to implement and test all the functions provide 
+//              by  book < Sams Teach Your self C++ in 24 hours> .
+//              
+// Author:      Yuancheng Liu
+//
+// Created:     2020/08/02
+// Copyright:   N.A.
+// License:     YC
+//-----------------------------------------------------------------------------
+
 //two way to define a constants:
 const int TEST_MD1 = true;
 #define TEST_MD2 true;

@@ -1,5 +1,16 @@
 #include <iostream>
 #include <string.h>
+//-----------------------------------------------------------------------------
+// Name:        24String.hpp
+//
+// Purpose:     This module is used to provide a string class. 
+//              
+// Author:      Yuancheng Liu
+//
+// Created:     2020/08/02
+// Copyright:   N.A.
+// License:     YC
+//-----------------------------------------------------------------------------
 
 class String
 {
@@ -23,6 +34,7 @@ public:
     String operator+(const String &);
     void operator+=(const String &);
     String &operator=(const String &);
+    friend std::ostream& operator<<(std::ostream& stream, String& newString); 
 
     int getLen() const { return len; };
     const char *getString() const { return value; };
@@ -122,4 +134,9 @@ void String::operator+=(const String &rhs)
         temp[i] = rhs[i - len];
     temp[totalLen] = '\0';
     *this = temp;
+}
+
+std::ostream& operator<<(std::ostream& stream, String& newString){
+    stream << newString.getString();
+    return stream;
 }

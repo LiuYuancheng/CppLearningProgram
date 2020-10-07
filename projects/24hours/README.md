@@ -2,7 +2,7 @@
 
 ##### Introduction
 
-This project is used test all the code in the C++ self learning box < Sams Teach Your self C++ in 24 hours> 
+This project is used test all the code in the C++ self learning book < Sams Teach Your self C++ in 24 hours> 
 
 #### Program Setup
 
