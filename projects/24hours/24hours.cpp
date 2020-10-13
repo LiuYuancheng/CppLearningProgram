@@ -1305,6 +1305,16 @@ void section22()
             break;
         }
     }
+
+    std::cout << "Simulating email system: \n";
+    pAddress sender(PostMaster, "james@ekzemplo.com", "James");
+    pAddress recipient(PostMaster, "sghharoh@ekzemplo.com", "SHaron");
+
+    PostMasterMsg messager(sender, recipient, "Greetings", 0);
+    std::cout << "Message review: \n";
+    std::cout << "From: " <<  messager.getSender() << "\n";
+    std::cout << "To:" << messager.getReceipient() << "\n";
+    std::cout << "Subject:" << messager.getSubject() << "\n";
 }
 
 //-----------------------------------------------------------------------------

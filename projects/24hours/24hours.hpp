@@ -569,9 +569,68 @@ enum SERVICE
     Internet
 };
 
+typedef unsigned long pDate;
 
+class pAddress
+{
+public:
+    pAddress(SERVICE newService,
+             const String &newAddress,
+             const String &newDisplay) : service(newService),
+                                         addrString(newAddress),
+                                         dispString(newDisplay){};
+    ~pAddress(){};
+    friend std::ostream &operator<<(std::ostream &stream, pAddress &address);
+    String &getDisplayString() { return dispString; };
 
+private:
+    SERVICE service;
+    String addrString;
+    String dispString;
+};
 
+std::ostream &operator<<(std::ostream &steam, pAddress &address)
+{
+    steam << address.getDisplayString();
+    return steam;
+}
 
+class PostMasterMsg
+{
+public:
+    PostMasterMsg();
+    PostMasterMsg(const pAddress &newSender,
+                  const pAddress &newRecipient,
+                  const String &newSubject,
+                  const pDate &newCreateDate) : sender(newSender),
+                                                recipient(newRecipient),
+                                                subject(newSubject),
+                                                createDate(newCreateDate),
+                                                lastModDate(newCreateDate),
+                                                firstRdDate(0),
+                                                lastRdDate(0)
+    {
+        std::cout << "Post master message created. \n";
+    };
 
+    ~PostMasterMsg(){};
 
+    void Edit()
+    {
+        std::cout << "Post master message edit function called. \n";
+    };
+
+    pAddress &getSender() { return sender; };
+    pAddress &getReceipient() { return recipient; };
+    String &getSubject() { return subject; };
+
+private:
+    pAddress sender;
+    pAddress recipient;
+    String subject;
+    pDate createDate;
+    pDate lastModDate;
+    pDate receiptDate;
+    pDate firstRdDate;
+    pDate lastRdDate;
+};
