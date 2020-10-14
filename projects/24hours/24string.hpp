@@ -8,8 +8,8 @@
 // Author:      Yuancheng Liu
 //
 // Created:     2020/08/02
-// Copyright:   N.A.
-// License:     YC
+// Copyright:   < Sams Teach Your self C++ in 24 hours>
+// License:     N.A
 //-----------------------------------------------------------------------------
 
 class String

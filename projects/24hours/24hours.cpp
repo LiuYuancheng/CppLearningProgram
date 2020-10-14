@@ -6,13 +6,13 @@
 // Name:        24hours.hpp
 //
 // Purpose:     The main program to implement and test all the functions provide 
-//              by  book < Sams Teach Your self C++ in 24 hours> .
+//              by the C++ book < Sams Teach Your self C++ in 24 hours> .
 //              
 // Author:      Yuancheng Liu
 //
 // Created:     2020/08/02
-// Copyright:   N.A.
-// License:     YC
+// Copyright:   < Sams Teach Your self C++ in 24 hours>
+// License:     N.A
 //-----------------------------------------------------------------------------
 
 //two way to define a constants:
@@ -51,6 +51,7 @@ void section1(){
         20: Using special classes, function and pointers. \n \
         21: Using new features of C++ 0X \n \
         22: Employing OOP analysis and design. \n \
+        23: Creating template.\n \
     \n ";
 }
 
@@ -1318,30 +1319,54 @@ void section22()
 }
 //-----------------------------------------------------------------------------
 // section 23: Creating template
+
+void linkListFunc1(LinkedList<StCat> &catList);
+void linkListFunc2(LinkedList<Data> &dataList);
+
 void section23()
 {
-
     std::cout << "section 23: Creating template.\n";
-    StCat *pCat;
-    Data *pData;
-    int val;
     LinkedList<StCat> catList;
     LinkedList<Data> dataList;
-    while (true)
+
+    linkListFunc1(catList);
+    std::cout << "All stCat: \n";
+    catList.showAll();
+
+    linkListFunc2(dataList);
+    std::cout << "All data: \n";
+    dataList.showAll();
+}
+
+void linkListFunc1(LinkedList<StCat> &catList)
+{
+    StCat *pCat;
+    int val;
+    do
     {
-        std::cout << "Input the int val(0 to stop) : ";
+        std::cout << "Input the age of the cat (0:stop):";
         std::cin >> val;
         if (!val)
             break;
         pCat = new StCat(val);
-        pData = new Data(val);
         catList.insert(pCat);
+    } while (val);
+    std::cout << "==> StCat collection finished.\n";
+}
+
+void linkListFunc2(LinkedList<Data> &dataList){
+    Data *pData;
+    int val;
+    do
+    {
+        std::cout << "Input the data int value (0:stop):";
+        std::cin >> val;
+        if (!val)
+            break;
+        pData = new Data(val);
         dataList.insert(pData);
-    }
-    std::cout << "All stCat: \n";
-    catList.showAll();
-    std::cout << "All data: \n";
-    dataList.showAll();
+    } while (val);
+    std::cout << "==> Data collection finished.\n";
 }
 
 //-----------------------------------------------------------------------------
