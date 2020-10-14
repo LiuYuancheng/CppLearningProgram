@@ -1056,7 +1056,7 @@ void section19()
     std::cout << "Section 19: Storing  information in linked list.\n";
     Data *pdata;
     int val;
-    LinkedList ll;
+    LinkedList<Data> ll;
     while (true)
     {
         std::cout << "Input value(0 for stop):";
@@ -1316,6 +1316,33 @@ void section22()
     std::cout << "To:" << messager.getReceipient() << "\n";
     std::cout << "Subject:" << messager.getSubject() << "\n";
 }
+//-----------------------------------------------------------------------------
+// section 23: Creating template
+void section23()
+{
+
+    std::cout << "section 23: Creating template.\n";
+    StCat *pCat;
+    Data *pData;
+    int val;
+    LinkedList<StCat> catList;
+    LinkedList<Data> dataList;
+    while (true)
+    {
+        std::cout << "Input the int val(0 to stop) : ";
+        std::cin >> val;
+        if (!val)
+            break;
+        pCat = new StCat(val);
+        pData = new Data(val);
+        catList.insert(pCat);
+        dataList.insert(pData);
+    }
+    std::cout << "All stCat: \n";
+    catList.showAll();
+    std::cout << "All data: \n";
+    dataList.showAll();
+}
 
 //-----------------------------------------------------------------------------
 void callSections(int choice)
@@ -1325,7 +1352,7 @@ void callSections(int choice)
     case 0:
         std::cout << "no more test .... ";
         return;
-    case 1: 
+    case 1:
         section1();
         break;
     case 2:
@@ -1388,8 +1415,11 @@ void callSections(int choice)
     case 21:
         section21();
         break;
-    case 22: 
+    case 22:
         section22();
+        break;
+    case 23:
+        section23();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";
@@ -1405,7 +1435,7 @@ int main()
     int choice = 0;
     do
     {
-        std::cout << "Enter the section number(2-20) you want to check the test code, 0 for end , 1 for help: ";
+        std::cout << "Enter the section number(2-23) you want to check the test code, 0 for end , 1 for help: ";
         std::cin >> choice;
         callSections(choice);
     } while (choice != 0);

@@ -454,11 +454,29 @@ private:
 class StCat
 {
 public:
-    StCat(int newAge = 1):age(newAge) { catCount++; };
-    virtual ~StCat() { catCount--; };
-    virtual int getAge() { return age; };
+    StCat(int newAge = 1) : age(newAge) { catCount++; };
+    virtual ~StCat()
+    {
+        catCount--;
+        std::cout << "Deleting " << age << " old cat";
+    };
+    virtual int getAge() const { return age; };
     virtual void setAge(int newAge) { age = newAge; };
-    static int getCatCount(){return catCount;};
+    static int getCatCount() { return catCount; };
+    int compare(const StCat &otherStCat)
+    {
+        if (age < otherStCat.getAge())
+            return kIsSmaller;
+        if (age > otherStCat.getAge())
+            return kIsLarger;
+        return kIsSame;
+    };
+
+    void show()
+    {
+        std::cout << "The cat is : " << age << "years old";
+    };
+
 private:
     int age;
     static int catCount;
@@ -634,3 +652,10 @@ private:
     pDate firstRdDate;
     pDate lastRdDate;
 };
+
+//=============================================================================
+// cat class which will be passed in to the link object.
+
+
+
+

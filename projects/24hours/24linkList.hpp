@@ -9,7 +9,7 @@
 // Copyright:   N.A.
 // License:     YC
 //-----------------------------------------------------------------------------
-
+#include <iostream> 
 //=============================================================================
 enum
 {
@@ -23,7 +23,10 @@ class Data
 {
 public:
     Data(int newVal) : value(newVal){};
-    ~Data(){};
+    ~Data()
+    {
+        std::cout << "Deleting Data object with value: " << value << "\n";
+    };
     int compare(const Data &);
     void show() { std::cout << value << "\n"; };
 
@@ -47,62 +50,60 @@ int Data::compare(const Data &otherData)
     }
 }
 
-//--
-class Node;
-class HeadNode;
-class TailNode;
-class InternalNode;
-
 //-
+template <class T> 
 class Node
 {
 public:
     Node(){};
     virtual ~Node(){};
-    virtual Node *insert(Data *data) = 0;
+    virtual Node *insert(T *object) = 0;
     virtual void show() = 0;
 
 private:
 };
 
 //-
-class InternalNode : public Node
+template <class T>
+class InternalNode : public Node<T>
 {
 public:
-    InternalNode(Data *newData, Node *newNode);
+    InternalNode(T *newData, Node<T> *newNode);
     virtual ~InternalNode()
     {
         delete data;
         delete next;
     };
-    virtual Node *insert(Data *data);
+    virtual Node<T> *insert(T *data);
     virtual void show()
-    {   
+    {
         std::cout << "- InternalNode show: \n";
         data->show();
         next->show();
     };
 
 private:
-    Data *data;
-    Node *next;
+    T *data;
+    Node<T> *next;
 };
 
-InternalNode::InternalNode(Data *newData, Node *newNode) : data(newData), next(newNode)
+template <class T>
+InternalNode<T>::InternalNode(T *newData, Node<T> *newNode) : data(newData), next(newNode)
 {
     std::cout << "Internal Node init \n";
 }
 
-Node *InternalNode::insert(Data *otherdata)
+template <class T>
+Node<T> *InternalNode<T>::insert(T *otherdata)
 {
-    std::cout << "x";
+    std::cout << "Internal node insert function called.\n";
     int result = data->compare(*otherdata);
     switch (result)
     {
     case kIsSame:
     case kIsLarger:
     {
-        InternalNode *dataNode = new InternalNode(otherdata, this);
+        InternalNode<T> *dataNode = new InternalNode<T>(otherdata, this);
         return dataNode;
     }
     case kIsSmaller:
@@ -114,72 +115,81 @@ Node *InternalNode::insert(Data *otherdata)
 }
 
 //-
-class TailNode : public Node
+template <class T>
+class TailNode : public Node<T>
 {
 public:
     TailNode(){};
     virtual ~TailNode(){};
-    virtual Node *insert(Data *data);
-    virtual void show(){
+    virtual Node<T> *insert(T *data);
+    virtual void show()
+    {
         std::cout << "- TailNode show: \n";
     };
 
 private:
 };
 
-Node *TailNode::insert(Data *data)
+template <class T>
+Node<T> *TailNode<T>::insert(T *data)
 {
     std::cout << ">";
-    InternalNode *dataNode = new InternalNode(data, this);
+    InternalNode<T> *dataNode = new InternalNode<T>(data, this);
     return dataNode;
 }
 
 //-
-class HeadNode : public Node
+template <class T>
+class HeadNode : public Node<T>
 {
 public:
     HeadNode();
     virtual ~HeadNode() { delete next; };
-    virtual Node *insert(Data *data);
+    virtual Node<T> *insert(T *data);
     virtual void show() { 
         std::cout << "- HeadNode show: ";
         next->show(); };
 private:
-    Node *next;
+    Node<T> *next;
 };
 
-HeadNode::HeadNode()
+template <class T>
+HeadNode<T>::HeadNode()
 {
-    next = new TailNode;
+    next = new TailNode<T>;
 }
 
-Node *HeadNode::insert(Data *data)
+template <class T>
+Node<T> *HeadNode<T>::insert(T *data)
 {
     next = next->insert(data);
     return this;
 }
 
 //-
+template <class T>
 class LinkedList
 {
 public:
     LinkedList();
-    ~LinkedList(){};
-    void insert(Data *data);
+    ~LinkedList(){delete head;};
+    void insert(T *data);
     void showAll() { 
         std::cout << "linkedList show: ";
         head->show(); };
 
 private:
-    HeadNode *head;
+    HeadNode<T> *head;
 };
 
-LinkedList::LinkedList()
+template <class T>
+LinkedList<T>::LinkedList()
 {
-    head = new HeadNode;
+    head = new HeadNode<T>;
 }
 
-void LinkedList::insert(Data *pdata)
+template <class T>
+void LinkedList<T>::insert(T *pdata)
 {
     head->insert(pdata);
 }
