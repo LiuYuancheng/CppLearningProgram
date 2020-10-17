@@ -664,6 +664,61 @@ public:
 private:
 };
 
+class XSize
+{
+public:
+    XSize(int newVal) : size(newVal){};
+    ~XSize(){};
+
+    virtual int getSize() { return size; };
+    virtual void printError()
+    {
+        std::cout << "Error[sizer]: " << size << "\n";
+    }
+
+protected:
+    int size;
+};
+
+class XTooBig : public XSize
+{
+public:
+    XTooBig(int size) : XSize(size){};
+    virtual void printError()
+    {
+        std::cout << "Error[Too big]: " << size << "\n";
+    };
+};
+
+class XTooSmall : public XSize
+{
+public:
+    XTooSmall(int size) : XSize(size){};
+    virtual void printError()
+    {
+        std::cout << "Error[Too small]: " << size << "\n";
+    };
+};
+
+class XZero : public XTooSmall
+{
+public:
+    XZero(int newSize) : XTooSmall(newSize){};
+    virtual void printError()
+    {
+        std::cout << "Error[Too small-Zero]: " << size << "\n";
+    };
+};
+
+class XNegtive:public XSize{
+public: 
+    XNegtive(int size):XSize(size){};
+    virtual void printError()
+    {
+        std::cout << "Error[negitve]: " << size << "\n";
+    };
+};
+
 class Array
 {
 public:
@@ -683,9 +738,20 @@ private:
     int size;
 };
 
-Array::Array(int newSize):
-size(newSize)
+Array::Array(int newSize) : size(newSize)
 {
+    if (newSize == 0)
+        throw XZero(newSize);
+
+    if (newSize < 0)
+        throw XNegtive(newSize);
+
+    if (newSize < 10)
+        throw XTooSmall(newSize);
+
+    if (newSize > 300)
+        throw XTooBig(newSize);
+
     pType = new int[size];
     for (int i = 0; i < size; i++)
         pType[i] = 0;

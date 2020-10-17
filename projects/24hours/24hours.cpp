@@ -1388,8 +1388,31 @@ void section24()
         std::cout << "Unable to process your input \n";
     }
     std::cout << "Finished.\n";
-}
 
+    try
+    {
+        int choice;
+        std::cout << "Enter athe array size:";
+        std::cin >> choice;
+        Array intArr(choice);
+        for (int i = 0; i < 100; i++)
+        {
+            intArr[i] = i;
+            std::cout << "intArr[" << i << "] OK \n";
+        }
+    }
+    catch (XBoundary)
+    {
+        std::cout << "Unable to process your input \n";
+    }
+    catch(XSize & exception){
+        exception.printError();
+    }
+    catch(...){
+        std::cout << "othter error \n";
+    }
+
+}
 //-----------------------------------------------------------------------------
 void callSections(int choice)
 {
