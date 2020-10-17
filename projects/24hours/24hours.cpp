@@ -52,6 +52,7 @@ void section1(){
         21: Using new features of C++ 0X \n \
         22: Employing OOP analysis and design. \n \
         23: Creating template.\n \
+        24: Dealing with exceptions and error handling. \n \
     \n ";
 }
 
@@ -1368,6 +1369,26 @@ void linkListFunc2(LinkedList<Data> &dataList){
     } while (val);
     std::cout << "==> Data collection finished.\n";
 }
+//-----------------------------------------------------------------------------
+//24: Dealing with exceptions and error handling
+void section24()
+{
+    std::cout << "section 24: Dealing with exceptions and error handling.\n";
+    Array intArr(20);
+    try
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            intArr[i] = i;
+            std::cout << "intArr[" << i << "] OK \n";
+        }
+    }
+    catch (XBoundary)
+    {
+        std::cout << "Unable to process your input \n";
+    }
+    std::cout << "Finished.\n";
+}
 
 //-----------------------------------------------------------------------------
 void callSections(int choice)
@@ -1445,6 +1466,9 @@ void callSections(int choice)
         break;
     case 23:
         section23();
+        break;
+    case 24:
+        section24();
         break;
     default:
         std::cout << " he choice [" << choice << "] is not volid\n";

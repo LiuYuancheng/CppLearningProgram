@@ -654,8 +654,85 @@ private:
 };
 
 //=============================================================================
-// cat class which will be passed in to the link object.
+const int defaultSize = 10;
+
+class XBoundary
+{
+public:
+    XBoundary(){};
+    ~XBoundary(){};
+private:
+};
+
+class Array
+{
+public:
+    Array(int size = defaultSize);
+    Array(const Array &rhs);
+    ~Array() { delete[] pType; };
+
+    Array &operator=(const Array &);
+    int &operator[](int offset);
+    const int &operator[](int offset) const;
+    int getSize() const { return size; };
+    int getVal(int idx) const {return pType[idx];};
+    friend std::ostream &operator<<(std::ostream &, const Array &);
+
+private:
+    int *pType;
+    int size;
+};
+
+Array::Array(int newSize):
+size(newSize)
+{
+    pType = new int[size];
+    for (int i = 0; i < size; i++)
+        pType[i] = 0;
+}
+
+Array::Array(const Array &rhs)
+{
+    size = rhs.getSize();
+    pType = new int[size];
+    for (int i = 0; i < size; i++)
+        pType[i] = rhs[i];
+}
 
 
+Array &Array::operator=(const Array &rhs)
+{
+    if (this == &rhs)
+        return *this;
+    delete[] pType;
+    size = rhs.getSize();
+    pType = new int[size];
+    for (int i = 0; i < size; i++)
+        pType[i] = rhs[i];
+    return *this;
+}
 
+int &Array::operator[](int offset)
+{
+    int size = getSize();
+    if (offset >= 0 && offset < size)
+        return pType[offset];
+    throw XBoundary();
+    return pType[offset];
+}
 
+const int &Array::operator[](int offset) const
+{
+    int size = getSize();
+    if (offset >= 0 && offset < size)
+        return pType[offset];
+    throw XBoundary();
+    return pType[offset];
+}
+
+std::ostream &operator<<(std::ostream & output, const Array & array){
+    for(int i=0; i<array.getSize(); i++){
+        output << "[" << i << "] :" << array[i] << "\n"; 
+    }
+    return output;
+}

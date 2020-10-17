@@ -2,15 +2,15 @@
 
 ##### Introduction
 
-This project is used test all the code in the C++ self learning book < Sams Teach Your self C++ in 24 hours> 
+This project is used test all the C++ program in the C++ self learning book < Sams Teach Your self C++ in 24 hours>.
 
 #### Program Setup
 
-###### Development Environment : windows
+###### Development Environment : Windows + VSCode
 
-###### Additional Lib/Software Need : N.A
+###### Additional Lib/Software Need : GNU(G++)
 
-###### Program File List :
+###### Program Files List :
 
 | Program File   | Execution Env | Description                                                  |
 | :------------- | ------------- | ------------------------------------------------------------ |
@@ -24,7 +24,7 @@ This project is used test all the code in the C++ self learning book < Sams Teac
 
 #### Program Usage
 
-###### Compile the code by cmd under Sindows: 
+###### Compile the code by cmd under Windows: 
 
 ```
 g++ 24hours.cpp -o 24hours.exe
@@ -64,7 +64,7 @@ Enter the selection:
 | 21           | Using new features of C++ 0X                        |
 | 22           | Employing OOP analysis and design.                  |
 | 23           | Creating template                                   |
-|              |                                                     |
+| 24           | Dealing with exceptions and error handling          |
 
 
 
