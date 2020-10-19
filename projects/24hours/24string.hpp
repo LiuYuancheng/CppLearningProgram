@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string.h>
 //-----------------------------------------------------------------------------
 // Name:        24String.hpp
 //
@@ -11,7 +9,10 @@
 // Copyright:   < Sams Teach Your self C++ in 24 hours>
 // License:     N.A
 //-----------------------------------------------------------------------------
+#include <iostream>
+#include <string.h>
 
+//-----------------------------------------------------------------------------
 class String
 {
 public:
@@ -48,11 +49,9 @@ private:
 String::String(int newLen)
 {
     len = newLen;
-    value = new char[len + 1];
+    value = new char[len + 1]; // Added the string end char '\0'
     for (int i = 0; i < len; i++)
-    {
         value[i] = '\0';
-    }
 }
 
 String::String(const char *const cString)
@@ -60,9 +59,7 @@ String::String(const char *const cString)
     len = strlen(cString);
     value = new char[len + 1];
     for (int i = 0; i < len; i++)
-    {
         value[i] = cString[i];
-    }
     value[len] = '\0';
 }
 
@@ -71,24 +68,18 @@ String::String(const String &rhs)
     len = rhs.getLen();
     value = new char[len + 1];
     for (int i = 0; i < len; i++)
-    {
         value[i] = rhs[i];
-    }
     value[len] = '\0';
 }
 
 String &String::operator=(const String &rhs)
 {
     if (this == &rhs)
-    {
         return *this;
-    }
     len = rhs.getLen();
     value = new char[len + 1];
     for (int i = 0; i < len; i++)
-    {
         value[i] = rhs[i];
-    }
     value[len] = '\0';
     return *this;
 }
@@ -109,6 +100,7 @@ char String::operator[](int offset) const
         return value[offset];
 }
 
+// Combine 2 String.
 String String::operator+(const String &rhs)
 {
     int totalLen = len + rhs.getLen();
@@ -122,6 +114,7 @@ String String::operator+(const String &rhs)
     return temp;
 }
 
+// Append string 2 to string 1.
 void String::operator+=(const String &rhs)
 {
     int rhsLen = rhs.getLen();

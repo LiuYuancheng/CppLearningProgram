@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string.h>
-#include "24hours.hpp"
-
 //-----------------------------------------------------------------------------
 // Name:        24hours.hpp
 //
@@ -14,6 +10,9 @@
 // Copyright:   < Sams Teach Your self C++ in 24 hours>
 // License:     N.A
 //-----------------------------------------------------------------------------
+#include <iostream>
+#include <string.h>
+#include "24hours.hpp"
 
 //two way to define a constants:
 const int TEST_MD1 = true;

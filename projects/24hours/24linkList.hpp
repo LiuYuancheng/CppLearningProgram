@@ -9,8 +9,9 @@
 // Copyright:   < Sams Teach Your self C++ in 24 hours>
 // License:     N.A
 //-----------------------------------------------------------------------------
-#include <iostream> 
-//=============================================================================
+#include <iostream>
+
+//-----------------------------------------------------------------------------
 enum
 {
     kIsSmaller,
@@ -18,7 +19,7 @@ enum
     kIsSame
 };
 
-//-
+// Date class used for testing. Usage: LinkedList<Data> ll;
 class Data
 {
 public:
@@ -50,7 +51,8 @@ int Data::compare(const Data &otherData)
     }
 }
 
-//-
+//-----------------------------------------------------------------------------
+// Node: 
 template <class T> 
 class Node
 {
@@ -63,7 +65,7 @@ public:
 private:
 };
 
-//-
+// Internal Node:
 template <class T>
 class InternalNode : public Node<T>
 {
@@ -114,7 +116,7 @@ Node<T> *InternalNode<T>::insert(T *otherdata)
     return this;
 }
 
-//-
+// Tail Node:
 template <class T>
 class TailNode : public Node<T>
 {
@@ -138,7 +140,7 @@ Node<T> *TailNode<T>::insert(T *data)
     return dataNode;
 }
 
-//-
+// Head Node: 
 template <class T>
 class HeadNode : public Node<T>
 {
@@ -166,7 +168,7 @@ Node<T> *HeadNode<T>::insert(T *data)
     return this;
 }
 
-//-
+// Linked List:
 template <class T>
 class LinkedList
 {
@@ -193,3 +195,22 @@ void LinkedList<T>::insert(T *pdata)
 {
     head->insert(pdata);
 }
+
+//=============================================================================
+/* Usage example: 
+    Data *pdata;
+    int val;
+    LinkedList<Data> ll;
+    while (true)
+    {
+        std::cout << "Input value(0 for stop):";
+        std::cin >> val;
+        if (!val)
+            break;
+        pdata = new Data(val);
+        ll.insert(pdata);
+    }
+
+    std::cout << "Linked list:\n";
+    ll.showAll();
+*/

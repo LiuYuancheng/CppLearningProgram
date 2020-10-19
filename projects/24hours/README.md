@@ -63,8 +63,8 @@ Enter the selection:
 | 20           | Using special classes, function and pointers.       |
 | 21           | Using new features of C++ 0X                        |
 | 22           | Employing OOP analysis and design.                  |
-| 23           | Creating template                                   |
-| 24           | Dealing with exceptions and error handling          |
+| 23           | Creating template.                                  |
+| 24           | Dealing with exceptions and error handling.         |
 
 
 
