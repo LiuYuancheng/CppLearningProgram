@@ -5,7 +5,7 @@
    extern "C" {
 #endif
 
-void print_value ( int x );
+int print_value ( int x );
 
 #ifdef __cplusplus
    }

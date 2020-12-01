@@ -1,0 +1,9 @@
+1.Create the solibrary.o file:
+g++ -fPIC -c -Wall solibrary.cpp
+
+2.Create the solibrary.so file:
+g++ -shared solibrary.o -o libsolibrary.so
+
+3. make the so test file:
+g++ -o out soTest.cpp solibrary.o 
+
