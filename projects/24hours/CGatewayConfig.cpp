@@ -79,7 +79,7 @@ int CGatewayConfig::Base64KeyFileDecode(map<string,string> &priv, string &keyfil
 	len = ftell(fp);
 	rewind(fp);
 	content = (unsigned char*) malloc(len);
-	//>memset(content, 0x00, len);
+	//memset(content, 0x00, len); //# why this cause the app terminate ? 
 	//cout<<"=> out"<<endl;
 	while(fgets((char*)content, len, fp) != NULL){
 		content[strlen((char*)content)-1] = 0x00;
